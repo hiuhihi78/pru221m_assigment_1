@@ -22,7 +22,7 @@ public class ConstructController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		path = Path.Combine(Application.dataPath, "/data.json");
+		path = Path.Combine(Application.dataPath + "/Construct/", "/data.json");
 		if (!File.Exists(path))
 		{
 			File.Create(path).Close();
@@ -53,7 +53,9 @@ public class ConstructController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			CreateGameObject(treePrefab, positionSpawn);
-		} else if(Input.GetKeyDown(KeyCode.Backspace)) {
+		}
+		else if (Input.GetKeyDown(KeyCode.Backspace))
+		{
 			RemoveGameObjectSelected(positionSpawn);
 		}
 		if (Input.GetKeyDown(KeyCode.U))
@@ -101,5 +103,30 @@ public class ConstructController : MonoBehaviour
 	{
 		string lsdata = File.ReadAllText(Application.dataPath + "/data.json");
 		ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
+	}
+
+	public int GetLastIndexFileInFolder()
+	{
+		string path = Path.Combine(Application.dataPath, "/Construct").Replace("/", "\\");
+		DirectoryInfo d = new DirectoryInfo(path); //Assuming Test is your Folder
+
+		FileInfo[] Files = d.GetFiles("*.json").OrderByDescending(c => c.Name).ToArray(); //Getting Text files
+		if (Files.Length == 0)
+		{
+			return 0;
+		}
+		else
+		{
+			try
+			{
+				string index = (Files[0].Name).Substring(4, (Files[0].Name).LastIndexOf(".json"));
+				return int.Parse(index);
+			}
+			catch (Exception)
+			{
+
+				return 0;
+			}
+		}
 	}
 }

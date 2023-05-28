@@ -31,7 +31,7 @@ public class TankController : MonoBehaviour
 			Direction = Direction.Down,
 			Hp = 10,
 			Point = 0,
-			Position = new Vector3(0, 0, 0),
+			Position = new Vector3(-6.49f, -3.42f, 0),
 			Guid = GUID.Generate()
 		};
 		//gameObject.transform.position = _tank.Position;
