@@ -34,7 +34,7 @@ public class TankController : MonoBehaviour
 			Position = new Vector3(0, 0, 0),
 			Guid = GUID.Generate()
 		};
-		gameObject.transform.position = _tank.Position;
+		//gameObject.transform.position = _tank.Position;
 		_tankMover = gameObject.GetComponent<TankMover>();
 		//_cameraController = camera.GetComponent<CameraController>();
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
