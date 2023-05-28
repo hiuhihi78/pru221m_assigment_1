@@ -23,7 +23,7 @@ namespace Assets.Scripts
 			base.Start();
 			_animator = GetComponent<Animator>();
 			_boxCollider = GetComponent<BoxCollider2D>();
-			_boxCollider.isTrigger = true;
+			//_boxCollider.isTrigger = true;
 			_animator.enabled = true;
 			Renderer.sortingOrder = 1;
 		}

@@ -95,7 +95,60 @@ public class ConstructController : MonoBehaviour
 
 	public void SaveIntoJson()
 	{
+		GameObject[] listWallBrick = GameObject.FindGameObjectsWithTag("wallBrick");
+		GameObject[] listWallSteel = GameObject.FindGameObjectsWithTag("wallSteel");
+		GameObject[] listWater = GameObject.FindGameObjectsWithTag("water");
+		GameObject[] listGrass = GameObject.FindGameObjectsWithTag("grass");
+		//GameObject baseGObject = GameObject.FindGameObjectWithTag("base");
 		ListData lsdata = new ListData();
+		if (listWallBrick.Length > 0)
+		{
+			foreach (var wb in listWallBrick)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = wb.transform.position,
+					Type = Assets.Scripts.Entity.Material.WallBrick
+				});
+			}
+		}
+		if (listWallSteel.Length > 0)
+		{
+			foreach (var ws in listWallSteel)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = ws.transform.position,
+					Type = Assets.Scripts.Entity.Material.WallSteel
+				});
+			}
+		}
+
+		if (listWater.Length > 0)
+		{
+			foreach (var wt in listWater)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = wt.transform.position,
+					Type = Assets.Scripts.Entity.Material.Water
+				});
+			}
+		}
+
+		if (listGrass.Length > 0)
+		{
+			foreach (var gr in listGrass)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = gr.transform.position,
+					Type = Assets.Scripts.Entity.Material.Grass
+				});
+			}
+		}
+
+
 		string dataJson = JsonUtility.ToJson(lsdata, true);
 		File.WriteAllText(path, dataJson);
 	}
