@@ -8,11 +8,18 @@ TagManager:
   - bullet
   - bulletEnemy
   - wallWrap
+<<<<<<< HEAD
   - wallBrick
   - wallSteel
   - water
   - grass
   - base
+=======
+  - tree
+  - water
+  - wallBrick
+  - wallSteel
+>>>>>>> d460ec2f01198f3c4c670db3aead1890b8a0af24
   layers:
   - Default
   - TransparentFX

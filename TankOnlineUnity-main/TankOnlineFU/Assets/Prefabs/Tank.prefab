@@ -209,6 +209,7 @@ MonoBehaviour:
   maxRange: 10
   delay: 1
   lastFire: 0
+  bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
 --- !u!95 &5685362192352705760
 Animator:
   serializedVersion: 5
