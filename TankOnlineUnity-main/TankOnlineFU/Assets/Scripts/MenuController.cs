@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public Camera camera;
+    public new Camera camera;
     public void OpenSelectMap()
     {
         Vector3 selectMapCameraPostion = new Vector3(75, 0, -10);
