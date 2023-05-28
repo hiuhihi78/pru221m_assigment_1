@@ -8,11 +8,16 @@ public class GameController : MonoBehaviour
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!gameIsPaused )
+            if (gameIsPaused)
             {
                 PauseGame();
             }
@@ -38,7 +43,8 @@ public class GameController : MonoBehaviour
 
     public void OpenMenu()
     {
-        SceneManager.LoadScene("0");
+        SceneManager.LoadScene("MenuSence");
+        Time.timeScale = 1;
     }
 
     public void QuitGame()

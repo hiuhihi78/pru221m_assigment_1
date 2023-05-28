@@ -10,6 +10,9 @@ public class BulletController : MonoBehaviour
 
     public int MaxRange { get; set; }
 
+    public GameObject BulletExplosionPrefabs { get; set; }   
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -58,5 +61,26 @@ public class BulletController : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Vector3 positionImpacted = this.transform.position;
+        if(collision.gameObject.tag == "wallWrap")
+        {
+            Destroy(this.gameObject);
+            BulletExplosion(positionImpacted);
+        }else if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            BulletExplosion(positionImpacted);
+        }
+    }
+
+
+    private void BulletExplosion(Vector3 positionImpacted)
+    {
+        var bullet = Instantiate(BulletExplosionPrefabs, positionImpacted, Quaternion.identity);
+        Destroy(bullet, 1.0f);
     }
 }

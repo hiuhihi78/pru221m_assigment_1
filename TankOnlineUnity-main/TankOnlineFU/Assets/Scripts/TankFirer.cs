@@ -16,6 +16,8 @@ namespace DefaultNamespace
         public float delay;
         public float lastFire = 0f;
 
+        public GameObject bulletExplosionPrefab;
+
         private void Start()
         {
         }
@@ -38,6 +40,9 @@ namespace DefaultNamespace
             var bulletController = bullet.GetComponent<BulletController>();
             bulletController.Bullet = b;
             bulletController.MaxRange = maxRange;
+
+            bulletController.BulletExplosionPrefabs = bulletExplosionPrefab;
+
             Vector2 force;
             switch (b.Direction)
             {
