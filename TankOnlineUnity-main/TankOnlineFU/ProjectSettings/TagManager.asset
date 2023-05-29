@@ -3,23 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags:
-  - Enemy
-  - bullet
-  - bulletEnemy
   - wallWrap
-  - tree
   - water
+  - base
+  - bullet
+  - grass
   - wallBrick
   - wallSteel
-  - wallWrapLeft
-  - wallWrapRight
-  - wallWrapUp
-  - wallWrapBottom
-=======
-  tags: []
->>>>>>> f2a62a0fc06ba07adbd7dabdc796937e0d15f156
   layers:
   - Default
   - TransparentFX
