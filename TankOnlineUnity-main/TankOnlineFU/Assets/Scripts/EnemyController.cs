@@ -30,7 +30,6 @@ public class EnemyController : MonoBehaviour
     private float timeStartShoot;
     private Direction? stuckTankDirection;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,17 +50,16 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         startTimeMove = Time.time;
-        randomTimeTankCanMove = Random.Range(0.5f, 1f);
+        randomTimeTankCanMove = RandomTimeTankMove();
         tankDirectionToMove = RandomDirectionTank(null);
         timeStartShoot = 0f;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (startTimeMove < randomTimeTankCanMove && stuckTankDirection == null)
         {
             TankMove(tankDirectionToMove);
@@ -76,101 +74,21 @@ public class EnemyController : MonoBehaviour
         else
         {
             startTimeMove = Time.time;
-            randomTimeTankCanMove = Time.time + Random.Range(0.5f, 1f);
-        }
-
-
-        /*
-        if(startTimeMove < randomTimeTankCanMove)
-        {
-            if(stuckTankDirection != null)
-            {
-                startTimeMove = randomTimeTankCanMove + 1;
-                stuckTankDirection = null;
-            }
-            else
-            {
-                TankMove(tankDirectionToMove);
-                startTimeMove = Time.time;
-            }
-        }
-        else
-        {
-            startTimeMove = Time.time;
-            randomTimeTankCanMove = Time.time + Random.Range(1, 4);
+            randomTimeTankCanMove = Time.time + RandomTimeTankMove();
             tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
         }
-        */
-
-
+        //Debug.Log("curremt time: " + Time.time + " randomtime: " + randomTimeTankCanMove + "dir : " + tankDirectionToMove);
+        //Debug.Log(randomTimeTankCanMove);
     }
 
-    private Direction RandomDirectionTank(Direction? stuckTankDirection)
-    {
-        Direction newDirection = RanDomDirection(stuckTankDirection);
-
-        if (stuckTankDirection != null && newDirection == stuckTankDirection)
-        {
-            newDirection = RanDomDirection(stuckTankDirection);
-        }
-
-        return newDirection;
-    }
-
-    private Direction RanDomDirection(Direction? unChoseDirection)
-    {
-        
-        List<Direction> listDirection = new List<Direction>() 
-        {
-            Direction.Up,
-            Direction.Down,
-            Direction.Left,
-            Direction.Right
-        };
-
-        if (unChoseDirection != null)
-        {
-            if (unChoseDirection == Direction.Up)
-            {
-                listDirection.Remove(Direction.Up);
-            }
-            else if (unChoseDirection == Direction.Down)
-            {
-                listDirection.Remove(Direction.Down);
-            }
-            else if (unChoseDirection == Direction.Left)
-            {
-                listDirection.Remove(Direction.Left);
-            }
-            else if (unChoseDirection != Direction.Right)
-            {
-                listDirection.Remove(Direction.Right);
-            }
-        }
 
 
-        var numberOfRandomDirection = listDirection.Count;
-        var random = Random.Range(0, numberOfRandomDirection);
-
-        switch (random)
-        {
-            case 1:
-                return listDirection[0];
-            case 2: 
-                return listDirection[1];
-            case 3: 
-                return listDirection[2];    
-            case 4: 
-                return listDirection[3];
-            default:
-                return Direction.Down;
-        }
-    }
 
 
     private void TankMove(Direction direction)
     {
         var currentPosition = gameObject.transform.position;
+        
         if (direction == Direction.Down) 
         {
             currentPosition.y -= speed * Time.deltaTime;    
@@ -213,6 +131,90 @@ public class EnemyController : MonoBehaviour
         */
     }
 
+    private Direction RandomDirectionTank(Direction? stuckTankDirection)
+    {
+        Direction newDirection = RanDomDirection(stuckTankDirection);
+
+        if (stuckTankDirection != null && newDirection == stuckTankDirection)
+        {
+            newDirection = RanDomDirection(stuckTankDirection);
+        }
+
+        return newDirection;
+    }
+
+    private Direction RanDomDirection(Direction? unChoseDirection)
+    {
+
+        List<Direction> listDirection = new List<Direction>()
+        {
+            Direction.Up,
+            Direction.Down,
+            Direction.Left,
+            Direction.Right
+        };
+
+        if (unChoseDirection != null)
+        {
+            if (unChoseDirection == Direction.Up)
+            {
+                listDirection.Remove(Direction.Up);
+            }
+            else if (unChoseDirection == Direction.Down)
+            {
+                listDirection.Remove(Direction.Down);
+            }
+            else if (unChoseDirection == Direction.Left)
+            {
+                listDirection.Remove(Direction.Left);
+            }
+            else if (unChoseDirection != Direction.Right)
+            {
+                listDirection.Remove(Direction.Right);
+            }
+        }
+
+
+        var numberOfRandomDirection = listDirection.Count;
+        var random = Random.Range(0, numberOfRandomDirection);
+
+        switch (random)
+        {
+            case 1:
+                return listDirection[0];
+            case 2:
+                return listDirection[1];
+            case 3:
+                return listDirection[2];
+            case 4:
+                return listDirection[3];
+            default:
+                return Direction.Down;
+        }
+    }
+
+
+    private float RandomTimeTankMove()
+    {
+        return Random.Range(1, 3);
+    }
+
+    private Direction turnAroundDirectionTank(Direction currentDirection)
+    {
+        switch (currentDirection)
+        {
+            case Direction.Down:
+                return Direction.Up;
+            case Direction.Left:
+                return Direction.Right;
+            case Direction.Right:   
+                return Direction.Left;
+            case Direction.Up:
+                return Direction.Down;
+            default: 
+                return currentDirection;
+        }
+    }
 
     private void Fire(Vector3 initialPoint)
     {
@@ -232,19 +234,37 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionTag = collision.gameObject.tag;
-        if (collisionTag == "wallWrapUp" ||
-            collisionTag == "wallWrapLeft" ||
-            collisionTag == "wallWrapRight" ||
-            collisionTag == "wallWrapButton" ||
-            collisionTag == "Enemy" ||
-            collisionTag == "Player" ||
-            collisionTag == "water" ||
-            collisionTag == "wallSteel"
-            )
+        switch(collisionTag) 
         {
-            stuckTankDirection = _tank.Direction;
-            Debug.Log(stuckTankDirection.ToString());
-            tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+            case "wallWrapUp":
+                tankDirectionToMove = Direction.Down;
+                break;
+            case "wallWrapBottom":
+                tankDirectionToMove = Direction.Up;
+                break;
+            case "wallWrapLeft":
+                tankDirectionToMove = Direction.Right;
+                break;
+            case "wallWrapRight":
+                tankDirectionToMove = Direction.Left;
+                break;
+            case "Enemy":
+                stuckTankDirection = _tank.Direction;
+                tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+                break;
+            case "water":
+                stuckTankDirection = _tank.Direction;
+                tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+                break;
+            case "wallSteel":
+                stuckTankDirection = _tank.Direction;
+                tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+                break;
+            case "Player":
+                stuckTankDirection = _tank.Direction;
+                tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+                break;
+
         }
     }
 

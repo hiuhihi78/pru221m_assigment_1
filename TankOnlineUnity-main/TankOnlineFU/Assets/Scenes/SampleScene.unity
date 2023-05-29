@@ -1416,11 +1416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4253063
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5192165
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2354,7 +2354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3203943746729076926, guid: 22bec36d54d52a04eacca56b501585cc, type: 3}
       propertyPath: m_Name
-      value: WallWrapHorizontalButton
+      value: WallWrapHorizontalButtom
       objectReference: {fileID: 0}
     - target: {fileID: 3203943746729076926, guid: 22bec36d54d52a04eacca56b501585cc, type: 3}
       propertyPath: m_TagString
