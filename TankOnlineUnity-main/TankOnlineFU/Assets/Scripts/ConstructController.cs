@@ -22,7 +22,7 @@ public class ConstructController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		path = Path.Combine(Application.dataPath + "/Construct/", "/data.json");
+		path = "Assets/Construct/test.json";
 		if (!File.Exists(path))
 		{
 			File.Create(path).Close();
