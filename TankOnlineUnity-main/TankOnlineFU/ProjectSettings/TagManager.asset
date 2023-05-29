@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
   - Enemy
   - bullet
@@ -16,6 +17,9 @@ TagManager:
   - wallWrapRight
   - wallWrapUp
   - wallWrapBottom
+=======
+  tags: []
+>>>>>>> f2a62a0fc06ba07adbd7dabdc796937e0d15f156
   layers:
   - Default
   - TransparentFX

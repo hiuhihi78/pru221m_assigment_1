@@ -14,7 +14,7 @@ public class ConstructController : MonoBehaviour
 	public GameObject pointerGameObject;
 	public GameObject wallBrickPrefab;
 	public GameObject wallSteelPrefab;
-	public GameObject treePrefab;
+	public GameObject grassPrefab;
 	public GameObject waterPrefab;
 
 	private string path;
@@ -22,7 +22,7 @@ public class ConstructController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		path = Path.Combine(Application.dataPath + "/Construct/", "/data.json");
+		path = "Assets/Construct/test.json";
 		if (!File.Exists(path))
 		{
 			File.Create(path).Close();
@@ -52,7 +52,7 @@ public class ConstructController : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
-			CreateGameObject(treePrefab, positionSpawn);
+			CreateGameObject(grassPrefab, positionSpawn);
 		}
 		else if (Input.GetKeyDown(KeyCode.Backspace))
 		{
@@ -95,7 +95,60 @@ public class ConstructController : MonoBehaviour
 
 	public void SaveIntoJson()
 	{
+		GameObject[] listWallBrick = GameObject.FindGameObjectsWithTag("wallBrick");
+		GameObject[] listWallSteel = GameObject.FindGameObjectsWithTag("wallSteel");
+		GameObject[] listWater = GameObject.FindGameObjectsWithTag("water");
+		GameObject[] listGrass = GameObject.FindGameObjectsWithTag("grass");
+		//GameObject baseGObject = GameObject.FindGameObjectWithTag("base");
 		ListData lsdata = new ListData();
+		if (listWallBrick.Length > 0)
+		{
+			foreach (var wb in listWallBrick)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = wb.transform.position,
+					Type = Assets.Scripts.Entity.Material.WallBrick
+				});
+			}
+		}
+		if (listWallSteel.Length > 0)
+		{
+			foreach (var ws in listWallSteel)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = ws.transform.position,
+					Type = Assets.Scripts.Entity.Material.WallSteel
+				});
+			}
+		}
+
+		if (listWater.Length > 0)
+		{
+			foreach (var wt in listWater)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = wt.transform.position,
+					Type = Assets.Scripts.Entity.Material.Water
+				});
+			}
+		}
+
+		if (listGrass.Length > 0)
+		{
+			foreach (var gr in listGrass)
+			{
+				lsdata.Data.Add(new Data
+				{
+					Position = gr.transform.position,
+					Type = Assets.Scripts.Entity.Material.Grass
+				});
+			}
+		}
+
+
 		string dataJson = JsonUtility.ToJson(lsdata, true);
 		File.WriteAllText(path, dataJson);
 	}

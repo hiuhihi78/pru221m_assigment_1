@@ -10,7 +10,7 @@ namespace Assets.Scripts.Entity
 	[Serializable]
 	public class Data
 	{
-		public string Type;
+		public Material Type;
 		public Vector3 Position;
 	}
 	[Serializable]
