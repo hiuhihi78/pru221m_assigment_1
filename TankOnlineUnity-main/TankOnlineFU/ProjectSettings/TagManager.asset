@@ -12,6 +12,10 @@ TagManager:
   - water
   - wallBrick
   - wallSteel
+  - wallWrapLeft
+  - wallWrapRight
+  - wallWrapUp
+  - wallWrapBottom
   layers:
   - Default
   - TransparentFX

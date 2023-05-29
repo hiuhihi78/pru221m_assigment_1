@@ -66,7 +66,12 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Vector3 positionImpacted = this.transform.position;
-        if(collision.gameObject.tag == "wallWrap")
+        var collisionTag = collision.gameObject.tag;
+        if (collisionTag == "wallWrapUp" ||
+            collisionTag == "wallWrapLeft" ||
+            collisionTag == "wallWrapRight" ||
+            collisionTag == "wallWrapButton" 
+            )
         {
             Destroy(this.gameObject);
             BulletExplosion(positionImpacted);
