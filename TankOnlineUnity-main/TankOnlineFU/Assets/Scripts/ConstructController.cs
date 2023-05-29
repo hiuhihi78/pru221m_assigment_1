@@ -14,7 +14,7 @@ public class ConstructController : MonoBehaviour
 	public GameObject pointerGameObject;
 	public GameObject wallBrickPrefab;
 	public GameObject wallSteelPrefab;
-	public GameObject treePrefab;
+	public GameObject grassPrefab;
 	public GameObject waterPrefab;
 
 	private string path;
@@ -52,7 +52,7 @@ public class ConstructController : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
-			CreateGameObject(treePrefab, positionSpawn);
+			CreateGameObject(grassPrefab, positionSpawn);
 		}
 		else if (Input.GetKeyDown(KeyCode.Backspace))
 		{
