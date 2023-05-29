@@ -24,11 +24,14 @@ public class EnemyController : MonoBehaviour
 
     public float delay;
 
+    public GameObject BigExplosionPrefabs;
+
     private float startTimeMove;
     private float randomTimeTankCanMove;
     private Direction tankDirectionToMove;
     private float timeStartShoot;
     private Direction? stuckTankDirection;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -196,7 +199,7 @@ public class EnemyController : MonoBehaviour
 
     private float RandomTimeTankMove()
     {
-        return Random.Range(1, 3);
+        return Random.Range(1, 4);
     }
 
     private Direction turnAroundDirectionTank(Direction currentDirection)
@@ -264,8 +267,13 @@ public class EnemyController : MonoBehaviour
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
-
         }
+    }
+
+    private void TankEnemyExplosion(Vector3 position)
+    {
+        var explosion = Instantiate(BigExplosionPrefabs, position, Quaternion.identity);
+        Destroy(explosion,0.75f);
     }
 
 }

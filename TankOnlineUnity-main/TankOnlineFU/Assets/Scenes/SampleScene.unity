@@ -281,6 +281,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 658675345, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: topWrap
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 658675345, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: leftWrap
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 658675345, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: rightWrap
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 658675345, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: bottomWrap
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 658675346, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: camera
       value: 
@@ -293,6 +309,10 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 711902216727361652, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: bigExplosionPrefabs
+      value: 
+      objectReference: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
     - target: {fileID: 711902216727361652, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: bulletExplosionPrefab
       value: 
@@ -356,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2820924243523736221, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_Mass
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
@@ -1410,6 +1434,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1219091062858617631, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: BigExplosionPrefabs
+      value: 
+      objectReference: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -18,6 +18,8 @@ namespace DefaultNamespace
 
         public GameObject bulletExplosionPrefab;
 
+        public GameObject bigExplosionPrefabs;
+
         private void Start()
         {
         }
@@ -42,6 +44,7 @@ namespace DefaultNamespace
             bulletController.MaxRange = maxRange;
 
             bulletController.BulletExplosionPrefabs = bulletExplosionPrefab;
+            bulletController.BigExplosionPrefabs = bigExplosionPrefabs;
 
             Vector2 force;
             switch (b.Direction)
