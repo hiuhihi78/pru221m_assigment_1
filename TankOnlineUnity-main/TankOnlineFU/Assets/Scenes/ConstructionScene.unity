@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318689440953627498, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441110217016, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441116373913, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -178,6 +190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick3
       objectReference: {fileID: 0}
+    - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_TagString
+      value: wallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
 --- !u!1 &221066701
@@ -222,6 +242,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318689440953627498, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441110217016, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441116373913, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -269,6 +301,14 @@ PrefabInstance:
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_Name
       value: WallBrick2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_TagString
+      value: wallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
@@ -611,6 +651,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318689440953627498, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441110217016, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441116373913, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -659,6 +711,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick1
       objectReference: {fileID: 0}
+    - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_TagString
+      value: wallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
 --- !u!1001 &954237437
@@ -668,6 +728,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318689440953627498, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441110217016, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441116373913, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -716,6 +788,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick5
       objectReference: {fileID: 0}
+    - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_TagString
+      value: wallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
 --- !u!1001 &1276746110
@@ -725,6 +805,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318689440953627498, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441110217016, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441116373913, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -773,6 +865,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick4
       objectReference: {fileID: 0}
+    - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_TagString
+      value: wallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
 --- !u!1 &1576782130
@@ -807,7 +907,7 @@ MonoBehaviour:
   pointerGameObject: {fileID: 1613718270}
   wallBrickPrefab: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
   wallSteelPrefab: {fileID: 1572274642512220054, guid: 0890a4d100eee2e409074de7786a7e8b, type: 3}
-  grassPrefab: {fileID: 0}
+  grassPrefab: {fileID: 249825281301527033, guid: 2dec9cc439b87694684c1a1342b753cb, type: 3}
   waterPrefab: {fileID: 1243021792124708962, guid: 4053f463a8ea271408eb028af285e800, type: 3}
 --- !u!4 &1576782132
 Transform:
@@ -1216,6 +1316,10 @@ PrefabInstance:
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Name
       value: TankPointer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4540928292571143920, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Enabled

@@ -18,11 +18,12 @@ public class ConstructController : MonoBehaviour
 	public GameObject waterPrefab;
 
 	private string path;
+	private string root = "Assets/Construct";
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		path = "Assets/Construct/test.json";
+		path = root + "/test.json";
 		if (!File.Exists(path))
 		{
 			File.Create(path).Close();
@@ -68,16 +69,37 @@ public class ConstructController : MonoBehaviour
 	private void CreateGameObject(GameObject gObject, Vector3 positionSpawn)
 	{
 		RemoveGameObjectSelected(positionSpawn);
-		Instantiate(gObject, positionSpawn, Quaternion.identity);
+		GameObject gameObject1 = Instantiate(gObject, positionSpawn, Quaternion.identity);
+		if (gameObject1.tag == "wallBrick" || gameObject1.tag == "wallSteel")
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				gameObject1.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
+			}
+		}
+		else
+		{
+			gameObject1.GetComponent<BoxCollider2D>().isTrigger = true;
+		}
 	}
 	private void RemoveGameObjectSelected(Vector3 positionSpawn)
 	{
 		var gameObjects = OverlapGameObjects(positionSpawn);
 		if (gameObjects.Count > 0)
 		{
+			GameObject parentObj = null;
+			if (gameObjects.Count > 1)
+			{
+				parentObj = gameObjects[0].transform.parent.gameObject;
+			}
 			foreach (var g in gameObjects)
 			{
 				Destroy(g);
+			}
+			if (parentObj != null)
+			{
+				Destroy(parentObj.gameObject);
 			}
 		}
 	}
@@ -154,14 +176,13 @@ public class ConstructController : MonoBehaviour
 	}
 	public void LoadFromJson()
 	{
-		string lsdata = File.ReadAllText(Application.dataPath + "/data.json");
+		string lsdata = File.ReadAllText(path + "/data.json");
 		ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
 	}
 
 	public int GetLastIndexFileInFolder()
 	{
-		string path = Path.Combine(Application.dataPath, "/Construct").Replace("/", "\\");
-		DirectoryInfo d = new DirectoryInfo(path); //Assuming Test is your Folder
+		DirectoryInfo d = new DirectoryInfo(root); //Assuming Test is your Folder
 
 		FileInfo[] Files = d.GetFiles("*.json").OrderByDescending(c => c.Name).ToArray(); //Getting Text files
 		if (Files.Length == 0)
