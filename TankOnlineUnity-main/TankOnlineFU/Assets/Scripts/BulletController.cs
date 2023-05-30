@@ -12,6 +12,10 @@ public class BulletController : MonoBehaviour
 
     public GameObject BulletExplosionPrefabs { get; set; }   
 
+    public GameObject BigExplosionPrefabs { get; set; }
+
+    public bool isTankPlayer;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -67,19 +71,34 @@ public class BulletController : MonoBehaviour
     {
         Vector3 positionImpacted = this.transform.position;
         var collisionTag = collision.gameObject.tag;
-        if (collisionTag == "wallWrapUp" ||
-            collisionTag == "wallWrapLeft" ||
-            collisionTag == "wallWrapRight" ||
-            collisionTag == "wallWrapButton" 
-            )
-        {
-            Destroy(this.gameObject);
-            BulletExplosion(positionImpacted);
-        }else if(collision.gameObject.tag == "Enemy")
+
+        if (collisionTag == TagGameObject.wallWrap)
         {
             Destroy(this.gameObject);
             BulletExplosion(positionImpacted);
         }
+
+        if (isTankPlayer) 
+        {
+            if (collisionTag == TagGameObject.enemy)
+            {
+                Destroy(this.gameObject);
+                var enemyObj = collision.gameObject;
+                Destroy(enemyObj);
+                TankExplosion(enemyObj.transform.position);
+            }
+        }
+        else
+        {
+            if (collisionTag == TagGameObject.player)
+            {
+                Destroy(this.gameObject);
+                var enemyObj = collision.gameObject;
+                Destroy(enemyObj);
+                TankExplosion(enemyObj.transform.position);
+            }
+        }
+        
     }
 
 
@@ -87,5 +106,11 @@ public class BulletController : MonoBehaviour
     {
         var bullet = Instantiate(BulletExplosionPrefabs, positionImpacted, Quaternion.identity);
         Destroy(bullet, 1.0f);
+    }
+
+    private void TankExplosion(Vector3 position)
+    {
+        var explosion = Instantiate(BigExplosionPrefabs, position, Quaternion.identity);
+        Destroy(explosion, 0.5f);
     }
 }

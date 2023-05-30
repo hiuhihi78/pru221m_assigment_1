@@ -18,6 +18,10 @@ namespace DefaultNamespace
 
         public GameObject bulletExplosionPrefab;
 
+        public GameObject bigExplosionPrefabs;
+
+        public bool isTankPlayer;
+
         private void Start()
         {
         }
@@ -37,11 +41,14 @@ namespace DefaultNamespace
             var bullet = Instantiate(bulletPrefab, b.InitialPosition, Quaternion.identity);
             var sr = bullet.GetComponent<SpriteRenderer>();
             var rigidBody2d = bullet.GetComponent<Rigidbody2D>();
-            var bulletController = bullet.GetComponent<BulletController>();
-            bulletController.Bullet = b;
-            bulletController.MaxRange = maxRange;
 
-            bulletController.BulletExplosionPrefabs = bulletExplosionPrefab;
+            BulletController bulletTankPlayerController = bullet.GetComponent<BulletController>();
+
+            bulletTankPlayerController.Bullet = b;
+            bulletTankPlayerController.MaxRange = maxRange;
+
+            bulletTankPlayerController.BulletExplosionPrefabs = bulletExplosionPrefab;
+            bulletTankPlayerController.BigExplosionPrefabs = bigExplosionPrefabs;
 
             Vector2 force;
             switch (b.Direction)

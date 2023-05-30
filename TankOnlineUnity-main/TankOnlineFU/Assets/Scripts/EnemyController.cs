@@ -22,13 +22,17 @@ public class EnemyController : MonoBehaviour
 
     public new Rigidbody2D rigidbody2D;
 
-    public float delay;
+    public GameObject BigExplosionPrefabs;
 
     private float startTimeMove;
     private float randomTimeTankCanMove;
     private Direction tankDirectionToMove;
     private float timeStartShoot;
+    private float timeEndShoot;
+    private float randomTimeShoot;
     private Direction? stuckTankDirection;
+    private Direction lastDirectionTankFirer;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -53,8 +57,9 @@ public class EnemyController : MonoBehaviour
         randomTimeTankCanMove = RandomTimeTankMove();
         tankDirectionToMove = RandomDirectionTank(null);
         timeStartShoot = 0f;
-
-
+        randomTimeShoot = RandomTimeShoot();
+        timeEndShoot = randomTimeShoot;
+        lastDirectionTankFirer = tankDirectionToMove;
     }
 
     // Update is called once per frame
@@ -79,10 +84,32 @@ public class EnemyController : MonoBehaviour
         }
         //Debug.Log("curremt time: " + Time.time + " randomtime: " + randomTimeTankCanMove + "dir : " + tankDirectionToMove);
         //Debug.Log(randomTimeTankCanMove);
+
+        
+
+        if (timeStartShoot > timeEndShoot && lastDirectionTankFirer != tankDirectionToMove)
+        {
+            Fire(gameObject.transform.position);
+            randomTimeShoot = RandomTimeShoot();
+            timeEndShoot = timeStartShoot + randomTimeShoot;
+            lastDirectionTankFirer = _tank.Direction;
+        }else if(timeStartShoot > timeEndShoot &&  lastDirectionTankFirer == tankDirectionToMove)
+        {
+            timeStartShoot = Time.time;
+            timeEndShoot = timeStartShoot + randomTimeShoot;
+        }
+        else
+        {
+            timeStartShoot = Time.time;
+        }
+        
     }
 
 
-
+    private float RandomTimeShoot()
+    {
+        return Random.Range(0, 3);
+    }
 
 
     private void TankMove(Direction direction)
@@ -120,15 +147,9 @@ public class EnemyController : MonoBehaviour
 
         _tank.Direction = direction;
         
-        /*
-        delay = Random.Range(1, 4);
+        
 
-        if (Time.time > timeStartShoot + delay)
-        {
-            Fire(gameObject.transform.position);
-            timeStartShoot = Time.time;
-        }
-        */
+        
     }
 
     private Direction RandomDirectionTank(Direction? stuckTankDirection)
@@ -180,13 +201,13 @@ public class EnemyController : MonoBehaviour
 
         switch (random)
         {
-            case 1:
+            case 0:
                 return listDirection[0];
-            case 2:
+            case 1:
                 return listDirection[1];
-            case 3:
+            case 2:
                 return listDirection[2];
-            case 4:
+            case 3:
                 return listDirection[3];
             default:
                 return Direction.Down;
@@ -196,7 +217,7 @@ public class EnemyController : MonoBehaviour
 
     private float RandomTimeTankMove()
     {
-        return Random.Range(1, 3);
+        return Random.Range(1, 2);
     }
 
     private Direction turnAroundDirectionTank(Direction currentDirection)
@@ -226,8 +247,9 @@ public class EnemyController : MonoBehaviour
             InitialPosition = initialPoint
         };
 
-
-        GetComponent<TankEnemyFirer>().Fire(bullet);
+        var tankFirer = GetComponent<TankFirer>();  
+        tankFirer.isTankPlayer = false;
+        tankFirer.Fire(bullet); 
     }
 
 
@@ -236,35 +258,25 @@ public class EnemyController : MonoBehaviour
         var collisionTag = collision.gameObject.tag;
         switch(collisionTag) 
         {
-            case "wallWrapUp":
-                tankDirectionToMove = Direction.Down;
+            case TagGameObject.wallWrap:
+                tankDirectionToMove = turnAroundDirectionTank(_tank.Direction);
                 break;
-            case "wallWrapBottom":
-                tankDirectionToMove = Direction.Up;
-                break;
-            case "wallWrapLeft":
-                tankDirectionToMove = Direction.Right;
-                break;
-            case "wallWrapRight":
-                tankDirectionToMove = Direction.Left;
-                break;
-            case "Enemy":
+            case TagGameObject.enemy:
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
-            case "water":
+            case TagGameObject.water:
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
-            case "wallSteel":
+            case TagGameObject.wallSteel:
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
-            case "Player":
+            case TagGameObject.player:
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
-
         }
     }
 
