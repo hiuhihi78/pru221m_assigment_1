@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185695495001854551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.498, y: -0.508, z: 0}
   m_LocalScale: {x: 3.496862, y: 3.279715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210,6 +210,8 @@ MonoBehaviour:
   delay: 1
   lastFire: 0
   bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
+  bigExplosionPrefabs: {fileID: 0}
+  isTankPlayer: 0
 --- !u!95 &5685362192352705760
 Animator:
   serializedVersion: 5
