@@ -59,7 +59,7 @@ public class ConstructController : MonoBehaviour
 		{
 			RemoveGameObjectSelected(positionSpawn);
 		}
-		if (Input.GetKeyDown(KeyCode.U))
+		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			Debug.Log("Save map");
 			SaveIntoJson();
