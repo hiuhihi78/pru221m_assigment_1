@@ -32,7 +32,12 @@ public class EnemyController : MonoBehaviour
     private float randomTimeShoot;
     private Direction? stuckTankDirection;
     private Direction lastDirectionTankFirer;
-    
+
+
+    public float topWrap;
+    public float bottomWrap;
+    public float leftWrap;
+    public float rightWrap;
 
     // Start is called before the first frame update
     void Start()
@@ -115,7 +120,8 @@ public class EnemyController : MonoBehaviour
     private void TankMove(Direction direction)
     {
         var currentPosition = gameObject.transform.position;
-        
+        var previousPos = gameObject.transform.position;
+
         if (direction == Direction.Down) 
         {
             currentPosition.y -= speed * Time.deltaTime;    
@@ -133,6 +139,15 @@ public class EnemyController : MonoBehaviour
             currentPosition.x += speed * Time.deltaTime;
         }
 
+        
+        if ((currentPosition.y > topWrap || currentPosition.y < bottomWrap
+            ||
+            currentPosition.x > rightWrap || currentPosition.x < leftWrap))
+        {
+            currentPosition = previousPos;
+            tankDirectionToMove = turnAroundDirectionTank(_tank.Direction);
+        }
+
         gameObject.transform.position = currentPosition;    
 
         /// sprite
@@ -146,10 +161,6 @@ public class EnemyController : MonoBehaviour
         };
 
         _tank.Direction = direction;
-        
-        
-
-        
     }
 
     private Direction RandomDirectionTank(Direction? stuckTankDirection)

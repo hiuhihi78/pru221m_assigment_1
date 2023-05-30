@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5497551058758225095}
   - component: {fileID: 1219091062858617631}
   - component: {fileID: 115384222}
+  - component: {fileID: 7410838861458662868}
   m_Layer: 0
   m_Name: EnemyAutoRunning
   m_TagString: Enemy
@@ -122,7 +123,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027981034464494935}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -155,6 +156,10 @@ MonoBehaviour:
   speed: 2
   rigidbody2D: {fileID: 5497551058758225095}
   BigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
+  topWrap: 4.08
+  bottomWrap: -4.08
+  leftWrap: -7.08
+  rightWrap: 8.08
 --- !u!114 &115384222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +184,20 @@ MonoBehaviour:
   bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
   bigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
   isTankPlayer: 0
+--- !u!114 &7410838861458662868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9027981034464494935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce52482f72ca442e6b3880f73fb4f360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  topWrap: 3.58
+  bottomWrap: -3.58
+  leftWrap: -6.58
+  rightWrap: 7.58
