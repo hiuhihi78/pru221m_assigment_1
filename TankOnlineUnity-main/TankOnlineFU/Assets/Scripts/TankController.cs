@@ -84,12 +84,14 @@ public class TankController : MonoBehaviour
 
 	private void Fire()
 	{
-		var b = new Bullet
+		var bullet = new Bullet
 		{
 			Direction = _tank.Direction,
 			Tank = _tank,
 			InitialPosition = _tank.Position
 		};
-		GetComponent<TankFirer>().Fire(b);
-	}
+        var tankFirer = GetComponent<TankFirer>();
+        tankFirer.isTankPlayer = true;
+        tankFirer.Fire(bullet);
+    }
 }

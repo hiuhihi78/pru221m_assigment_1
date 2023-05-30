@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8609911355310240954}
   - component: {fileID: 5497551058758225095}
   - component: {fileID: 1219091062858617631}
-  - component: {fileID: 1560407835366346666}
+  - component: {fileID: 115384222}
   m_Layer: 0
   m_Name: EnemyAutoRunning
   m_TagString: Enemy
@@ -154,8 +154,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   speed: 2
   rigidbody2D: {fileID: 5497551058758225095}
-  delay: 0
---- !u!114 &1560407835366346666
+  BigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
+--- !u!114 &115384222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9027981034464494935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3aa783c471d734089eba06f1cf520d, type: 3}
+  m_Script: {fileID: 11500000, guid: eb23512406054bfebb417dfedf21e7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7740309687340280598, guid: 55d77b55c3c7a437ea8d0c1599983c97, type: 3}
@@ -173,7 +173,9 @@ MonoBehaviour:
   spriteUp: {fileID: 21300000, guid: 27a8e2e75693e4e69ade2de1a9ac6ce3, type: 3}
   spriteDown: {fileID: 21300000, guid: c809315d9e24d474ba994bee424cf98c, type: 3}
   speed: 2
-  maxRange: 10
+  maxRange: 5
   delay: 1
   lastFire: 0
-  bulletExplosionPrefab: {fileID: 0}
+  bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
+  bigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
+  isTankPlayer: 0

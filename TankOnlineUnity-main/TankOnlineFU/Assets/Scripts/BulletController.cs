@@ -14,6 +14,8 @@ public class BulletController : MonoBehaviour
 
     public GameObject BigExplosionPrefabs { get; set; }
 
+    public bool isTankPlayer;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -69,23 +71,34 @@ public class BulletController : MonoBehaviour
     {
         Vector3 positionImpacted = this.transform.position;
         var collisionTag = collision.gameObject.tag;
-        if (collisionTag == "wallWrapUp" ||
-            collisionTag == "wallWrapLeft" ||
-            collisionTag == "wallWrapRight" ||
-            collisionTag == "wallWrapButton"
-            )
+
+        if (collisionTag == TagGameObject.wallWrap)
         {
             Destroy(this.gameObject);
             BulletExplosion(positionImpacted);
         }
 
-        if(collisionTag == "Enemy")
+        if (isTankPlayer) 
         {
-            Destroy(this.gameObject);
-            var enemyObj = collision.gameObject;
-            Destroy(enemyObj);
-            TankExplosion(enemyObj.transform.position);
+            if (collisionTag == TagGameObject.enemy)
+            {
+                Destroy(this.gameObject);
+                var enemyObj = collision.gameObject;
+                Destroy(enemyObj);
+                TankExplosion(enemyObj.transform.position);
+            }
         }
+        else
+        {
+            if (collisionTag == TagGameObject.player)
+            {
+                Destroy(this.gameObject);
+                var enemyObj = collision.gameObject;
+                Destroy(enemyObj);
+                TankExplosion(enemyObj.transform.position);
+            }
+        }
+        
     }
 
 
@@ -98,6 +111,6 @@ public class BulletController : MonoBehaviour
     private void TankExplosion(Vector3 position)
     {
         var explosion = Instantiate(BigExplosionPrefabs, position, Quaternion.identity);
-        Destroy(explosion, 1.5f);
+        Destroy(explosion, 0.5f);
     }
 }
