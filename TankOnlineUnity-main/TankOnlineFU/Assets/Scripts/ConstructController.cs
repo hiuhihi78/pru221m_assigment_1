@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
@@ -17,21 +18,13 @@ public class ConstructController : MonoBehaviour
 	public GameObject grassPrefab;
 	public GameObject waterPrefab;
 
-	private string path;
 	private string root = "Assets/Construct";
+	private string prefix = "Map";
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		path = root + "/test.json";
-		if (!File.Exists(path))
-		{
-			File.Create(path).Close();
-		}
-		else
-		{
-			File.WriteAllText(path, string.Empty);
-		}
+		
 	}
 
 	// Update is called once per frame
@@ -107,10 +100,7 @@ public class ConstructController : MonoBehaviour
 	public List<GameObject> OverlapGameObjects(Vector3 postion)
 	{
 		var gameObjects = Physics2D.OverlapPointAll(postion)
-			.Where(g => g.gameObject != pointerGameObject
-			//&& g.gameObject.transform.position.x == postion.x
-			//&& g.gameObject.transform.position.y == postion.y
-			)
+			.Where(g => g.gameObject != pointerGameObject)
 			.Select(x => x.gameObject).ToList();
 		return gameObjects;
 	}
@@ -169,23 +159,30 @@ public class ConstructController : MonoBehaviour
 				});
 			}
 		}
-
-
+		string path = $"{root}/{prefix}{GetLastIndexFileInFolder() + 1}.json";
+		if (!File.Exists(path))
+		{
+			File.Create(path).Close();
+		}
+		else
+		{
+			File.WriteAllText(path, string.Empty);
+		}
 		string dataJson = JsonUtility.ToJson(lsdata, true);
 		File.WriteAllText(path, dataJson);
 	}
 	public void LoadFromJson()
 	{
-		string lsdata = File.ReadAllText(path + "/data.json");
+		string lsdata = File.ReadAllText(root + "/Map1.json");
 		ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
 	}
 
 	public int GetLastIndexFileInFolder()
 	{
-		DirectoryInfo d = new DirectoryInfo(root); //Assuming Test is your Folder
-
-		FileInfo[] Files = d.GetFiles("*.json").OrderByDescending(c => c.Name).ToArray(); //Getting Text files
-		if (Files.Length == 0)
+		DirectoryInfo d = new DirectoryInfo(root);
+		Regex regex = new Regex("^Map[0-9]{1,}.json$");
+		FileInfo[] files = d.GetFiles("*.json").Where(x => regex.IsMatch(x.Name)).OrderByDescending(c => c.CreationTime).ToArray(); //Getting Text files
+		if (files.Length == 0)
 		{
 			return 0;
 		}
@@ -193,7 +190,8 @@ public class ConstructController : MonoBehaviour
 		{
 			try
 			{
-				string index = (Files[0].Name).Substring(4, (Files[0].Name).LastIndexOf(".json"));
+				string filename = files[0].Name;
+				string index = filename.Replace("Map", "").Replace(".json", "");
 				return int.Parse(index);
 			}
 			catch (Exception)

@@ -18,8 +18,8 @@ public class WallController : MonoBehaviour
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (gameObject.tag == "wallBrick" &&
-			(collision.gameObject.CompareTag("bullet") || collision.gameObject.CompareTag("bulletEnemy")))
+		if (gameObject.tag == TagGameObject.wallBrick &&
+			(collision.gameObject.CompareTag(TagGameObject.bullet) || collision.gameObject.CompareTag(TagGameObject.bulletEnemy)))
 		{
 			Destroy(gameObject);
 		}

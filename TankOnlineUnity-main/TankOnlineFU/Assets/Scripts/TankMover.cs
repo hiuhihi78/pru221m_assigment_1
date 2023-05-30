@@ -27,7 +27,7 @@ public class TankMover : MonoBehaviour
 	public Vector3 Move(Direction direction, bool isTankPointer = false)
 	{
 		var currentPos = gameObject.transform.position;
-		var previousPos = gameObject.transform.position;
+		//var previousPos = gameObject.transform.position;
 		switch (direction)
 		{
 			case Direction.Down:
@@ -45,13 +45,13 @@ public class TankMover : MonoBehaviour
 			default:
 				throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
 		}
-		if (isTankPointer &&
-			(currentPos.y > topWrap || currentPos.y < bottomWrap
-			||
-			currentPos.x > rightWrap || currentPos.x < leftWrap))
-		{
-			return previousPos;
-		}
+		//if (isTankPointer &&
+		//	(currentPos.y > topWrap || currentPos.y < bottomWrap
+		//	||
+		//	currentPos.x > rightWrap || currentPos.x < leftWrap))
+		//{
+		//	return previousPos;
+		//}
 		gameObject.transform.position = currentPos;
 		return currentPos;
 	}

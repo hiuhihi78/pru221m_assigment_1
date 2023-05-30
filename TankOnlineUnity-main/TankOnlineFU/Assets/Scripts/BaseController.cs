@@ -17,4 +17,13 @@ public class BaseController : MonoBehaviour
     {
         
     }
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.gameObject.CompareTag(TagGameObject.bullet) 
+            || collision.gameObject.CompareTag(TagGameObject.bulletEnemy))
+        {
+			_spriteRenderer.sprite = baseDestroyedSprite;
+
+		}
+	}
 }

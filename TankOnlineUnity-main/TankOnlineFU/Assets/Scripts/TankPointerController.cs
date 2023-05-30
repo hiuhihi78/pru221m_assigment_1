@@ -105,10 +105,16 @@ namespace Assets.Scripts
 			RaycastHit2D[] ray = Physics2D.LinecastAll(transform.position, endPoint);
 			if (ray.Length > 1)
 			{
-				GameObject baseGameObject = ray.Where(x => x.collider.gameObject.tag == "base")
+				GameObject baseGameObject = ray.Where(x => x.collider.gameObject.tag == TagGameObject.basePlayer
+					|| x.collider.gameObject.tag == TagGameObject.wallWrap
+				)
 					.Select(x => x.transform.gameObject)
 					.FirstOrDefault();
-				if (baseGameObject != null && baseGameObject.tag == "base")
+				if (baseGameObject != null && baseGameObject.tag == TagGameObject.basePlayer)
+				{
+					return true;
+				}
+				else if (baseGameObject != null && baseGameObject.tag == TagGameObject.wallWrap)
 				{
 					return true;
 				}
