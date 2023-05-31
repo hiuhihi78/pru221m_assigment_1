@@ -64,10 +64,6 @@ namespace Assets.Scripts
 			{
 				return;
 			}
-			if (CollideBase(direction))
-			{
-				return;
-			}
 
 			Tank.Position = TankMover.Move(direction, isPointer);
 			Tank.Direction = direction;
@@ -81,46 +77,6 @@ namespace Assets.Scripts
 				_ => Renderer.sprite
 			};
 			_lastTimePress = Time.time;
-		}
-		private bool CollideBase(Direction direction)
-		{
-			Vector3 endPoint;
-			if (direction == Direction.Left)
-			{
-				endPoint = new Vector3(transform.position.x - 1.3f, transform.position.y, transform.position.z);
-
-			}
-			else if (direction == Direction.Up)
-			{
-				endPoint = new Vector3(transform.position.x, transform.position.y + 1.3f, transform.position.z);
-			}
-			else if (direction == Direction.Right)
-			{
-				endPoint = new Vector3(transform.position.x + 1.3f, transform.position.y, transform.position.z);
-			}
-			else
-			{
-				endPoint = new Vector3(transform.position.x, transform.position.y - 1.3f, transform.position.z);
-			}
-			RaycastHit2D[] ray = Physics2D.LinecastAll(transform.position, endPoint);
-			if (ray.Length > 1)
-			{
-				GameObject baseGameObject = ray.Where(x => x.collider.gameObject.tag == TagGameObject.basePlayer
-					|| x.collider.gameObject.tag == TagGameObject.wallWrap
-				)
-					.Select(x => x.transform.gameObject)
-					.FirstOrDefault();
-				if (baseGameObject != null && baseGameObject.tag == TagGameObject.basePlayer)
-				{
-					return true;
-				}
-				else if (baseGameObject != null && baseGameObject.tag == TagGameObject.wallWrap)
-				{
-					return true;
-				}
-			}
-			Debug.DrawLine(transform.position, endPoint);
-			return false;
 		}
 	}
 
