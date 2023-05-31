@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3318689440953627496}
   m_Layer: 0
   m_Name: wall_brick (2)
-  m_TagString: Untagged
+  m_TagString: wallBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 3318689441110217022}
   m_Layer: 0
   m_Name: wall_brick (3)
-  m_TagString: Untagged
+  m_TagString: wallBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 3318689441116373919}
   m_Layer: 0
   m_Name: wall_brick
-  m_TagString: Untagged
+  m_TagString: wallBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 3318689441351447608}
   m_Layer: 0
   m_Name: WallBrick
-  m_TagString: wallBrick
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3318689441404039132}
   m_Layer: 0
   m_Name: wall_brick (1)
-  m_TagString: Untagged
+  m_TagString: wallBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

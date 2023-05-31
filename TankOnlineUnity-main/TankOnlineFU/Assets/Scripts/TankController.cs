@@ -21,9 +21,12 @@ public class TankController : MonoBehaviour
 	public TankMover TankMover { get => _tankMover; }
 	public SpriteRenderer Renderer { get => _renderer;  }
 
-	//public new GameObject camera;
+	public GameObject gameOverUI;
+    public GameObject gameWinUI;
 
-	protected virtual void Start()
+    //public new GameObject camera;
+
+    protected virtual void Start()
 	{
 		_tank = new Tank
 		{
@@ -65,7 +68,9 @@ public class TankController : MonoBehaviour
 		{
 			Fire();
 		}
-	}
+		checkWining();
+
+    }
 
 	protected virtual void Move(Direction direction)
 	{
@@ -93,5 +98,22 @@ public class TankController : MonoBehaviour
         var tankFirer = GetComponent<TankFirer>();
         tankFirer.isTankPlayer = true;
         tankFirer.Fire(bullet);
+    }
+
+    private void checkWining()
+    {
+        GameObject enemys = GameObject.Find("Enemys");
+        var numberOfEnemys = enemys.transform.childCount;
+        if (numberOfEnemys == 0)
+        {
+            gameWinUI.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 0;
+        gameOverUI.SetActive(true); 
     }
 }

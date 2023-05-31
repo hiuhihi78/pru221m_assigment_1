@@ -70,6 +70,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // moving
         if (startTimeMove < randomTimeTankCanMove && stuckTankDirection == null)
         {
             TankMove(tankDirectionToMove);
@@ -87,11 +88,21 @@ public class EnemyController : MonoBehaviour
             randomTimeTankCanMove = Time.time + RandomTimeTankMove();
             tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
         }
-        //Debug.Log("curremt time: " + Time.time + " randomtime: " + randomTimeTankCanMove + "dir : " + tankDirectionToMove);
-        //Debug.Log(randomTimeTankCanMove);
 
-        
+        //shooting
+        if (timeStartShoot > timeEndShoot)
+        {
+            Fire(gameObject.transform.position);
+            randomTimeShoot = RandomTimeShoot();
+            timeEndShoot = timeStartShoot + randomTimeShoot;
+        }
+        else
+        {
+            timeStartShoot = Time.time;
+        }
 
+
+        /*
         if (timeStartShoot > timeEndShoot && lastDirectionTankFirer != tankDirectionToMove)
         {
             Fire(gameObject.transform.position);
@@ -107,13 +118,14 @@ public class EnemyController : MonoBehaviour
         {
             timeStartShoot = Time.time;
         }
-        
+        */
+
     }
 
 
     private float RandomTimeShoot()
     {
-        return Random.Range(0, 3);
+        return Random.Range(1, 3);
     }
 
 
@@ -288,7 +300,10 @@ public class EnemyController : MonoBehaviour
                 stuckTankDirection = _tank.Direction;
                 tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
                 break;
+            case TagGameObject.wallBrick:
+                stuckTankDirection = _tank.Direction;
+                tankDirectionToMove = RandomDirectionTank(stuckTankDirection);
+                break;
         }
     }
-
 }
