@@ -63,7 +63,7 @@ public class ConstructController : MonoBehaviour
 	{
 		RemoveGameObjectSelected(positionSpawn);
 		GameObject gameObject1 = Instantiate(gObject, positionSpawn, Quaternion.identity);
-		if (gameObject1.tag == "wallBrick" || gameObject1.tag == "wallSteel")
+		if(gameObject1.transform.childCount > 0)
 		{
 			for (int i = 0; i < 4; i++)
 			{
