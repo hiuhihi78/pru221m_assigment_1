@@ -539,6 +539,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929132734}
     m_Modifications:
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -600,6 +608,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929132734}
     m_Modifications:
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -836,6 +852,14 @@ PrefabInstance:
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2820924243523736221, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2820924243523736221, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
@@ -2634,6 +2658,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929132734}
     m_Modifications:
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3411,6 +3443,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929132734}
     m_Modifications:
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497551058758225095, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7465577958060679680, guid: 5c61ee7cef2614d45a0d4fd5a4347e1e, type: 3}
       propertyPath: m_RootOrder
       value: 3

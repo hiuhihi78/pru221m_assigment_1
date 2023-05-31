@@ -105,13 +105,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 4
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-5464844381995233376
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +216,6 @@ MonoBehaviour:
   bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
   bigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
   isTankPlayer: 1
-  gameWinUI: {fileID: 0}
 --- !u!95 &5685362192352705760
 Animator:
   serializedVersion: 5
