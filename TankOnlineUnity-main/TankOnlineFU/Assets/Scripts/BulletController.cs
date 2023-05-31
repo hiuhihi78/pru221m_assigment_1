@@ -72,34 +72,53 @@ public class BulletController : MonoBehaviour
         Vector3 positionImpacted = this.transform.position;
         var collisionTag = collision.gameObject.tag;
 
-        if (collisionTag == TagGameObject.wallWrap)
+
+        switch (collisionTag)
         {
-            Destroy(this.gameObject);
-            BulletExplosion(positionImpacted);
+            case TagGameObject.wallWrap:
+                Destroy(this.gameObject);
+                BulletExplosion(positionImpacted);
+                break;
+            case TagGameObject.wallSteel:
+                Destroy(this.gameObject);
+                BulletExplosion(positionImpacted);
+                break;
+            case TagGameObject.wallBrick:
+                Destroy(this.gameObject);
+                BulletExplosion(positionImpacted);
+                Destroy(collision.gameObject);
+                break;
         }
 
         if (isTankPlayer) 
         {
-            if (collisionTag == TagGameObject.enemy)
+            switch (collisionTag)
             {
-                Destroy(this.gameObject);
-                var enemyObj = collision.gameObject;
-                Destroy(enemyObj);
-                TankExplosion(enemyObj.transform.position);
+                case TagGameObject.enemy:
+                    DestroyTank(collision.gameObject, this.gameObject);
+                    break;
             }
         }
         else
         {
-            if (collisionTag == TagGameObject.player)
+            switch (collisionTag)
             {
-                Destroy(this.gameObject);
-                var enemyObj = collision.gameObject;
-                Destroy(enemyObj);
-                TankExplosion(enemyObj.transform.position);
+                case TagGameObject.player:
+                    DestroyTank(collision.gameObject, this.gameObject);
+                    break;
             }
         }
         
     }
+
+
+
+    private void DestroyTank(GameObject tank, GameObject bullet)
+     {
+        Destroy(bullet);
+        Destroy(tank);
+        TankExplosion(tank.transform.position);
+     }
 
 
     private void BulletExplosion(Vector3 positionImpacted)

@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 {
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
-
     private void Start()
     {
         

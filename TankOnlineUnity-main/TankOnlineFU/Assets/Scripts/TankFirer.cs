@@ -22,6 +22,7 @@ namespace DefaultNamespace
 
         public bool isTankPlayer;
 
+
         private void Start()
         {
         }
@@ -42,13 +43,14 @@ namespace DefaultNamespace
             var sr = bullet.GetComponent<SpriteRenderer>();
             var rigidBody2d = bullet.GetComponent<Rigidbody2D>();
 
-            BulletController bulletTankPlayerController = bullet.GetComponent<BulletController>();
+            BulletController bulletTankController = bullet.GetComponent<BulletController>();
+            bulletTankController.isTankPlayer = isTankPlayer;
 
-            bulletTankPlayerController.Bullet = b;
-            bulletTankPlayerController.MaxRange = maxRange;
+            bulletTankController.Bullet = b;
+            bulletTankController.MaxRange = maxRange;
 
-            bulletTankPlayerController.BulletExplosionPrefabs = bulletExplosionPrefab;
-            bulletTankPlayerController.BigExplosionPrefabs = bigExplosionPrefabs;
+            bulletTankController.BulletExplosionPrefabs = bulletExplosionPrefab;
+            bulletTankController.BigExplosionPrefabs = bigExplosionPrefabs;
 
             Vector2 force;
             switch (b.Direction)

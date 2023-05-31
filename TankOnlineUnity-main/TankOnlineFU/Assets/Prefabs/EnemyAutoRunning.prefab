@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 9027981034464494935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5, y: 1.5, z: 0}
-  m_LocalScale: {x: 3.717229, y: 3.23571, z: 1}
+  m_LocalScale: {x: 3.717229, y: 3.2357101, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0017219186, y: 0.0000018700957}
+  m_Offset: {x: -0.0077623725, y: -0.0021449178}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26052386, y: 0.301481}
+  m_Size: {x: 0.2549168, y: 0.30320594}
   m_EdgeRadius: 0
 --- !u!50 &5497551058758225095
 Rigidbody2D:
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027981034464494935}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -153,13 +153,13 @@ MonoBehaviour:
   tankLeft: {fileID: 21300000, guid: 12ab9f9eed1094c54945e97669ccae02, type: 3}
   tankRight: {fileID: 21300000, guid: d1e5bfe0793af45329ebdc66aef22b6f, type: 3}
   spriteRenderer: {fileID: 0}
-  speed: 2
+  speed: 1
   rigidbody2D: {fileID: 5497551058758225095}
   BigExplosionPrefabs: {fileID: 1751668343546258601, guid: c3f541a78daed754a8dec1fb8bbc10c4, type: 3}
-  topWrap: 4.08
-  bottomWrap: -4.08
-  leftWrap: -7.08
-  rightWrap: 8.08
+  topWrap: 3.58
+  bottomWrap: -3.58
+  leftWrap: -6.58
+  rightWrap: 7.58
 --- !u!114 &115384222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   spriteLeft: {fileID: 21300000, guid: 6783b99fa46ad430680016ebeb8ea713, type: 3}
   spriteUp: {fileID: 21300000, guid: 27a8e2e75693e4e69ade2de1a9ac6ce3, type: 3}
   spriteDown: {fileID: 21300000, guid: c809315d9e24d474ba994bee424cf98c, type: 3}
-  speed: 2
+  speed: 3
   maxRange: 5
   delay: 1
   lastFire: 0
