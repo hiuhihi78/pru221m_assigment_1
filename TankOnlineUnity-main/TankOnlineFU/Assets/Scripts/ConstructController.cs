@@ -76,7 +76,10 @@ public class ConstructController : MonoBehaviour
 			gameObject1.GetComponent<BoxCollider2D>().isTrigger = true;
 		}
 	}
-	private void RemoveGameObjectSelected(Vector3 positionSpawn)
+
+
+
+    private void RemoveGameObjectSelected(Vector3 positionSpawn)
 	{
 		var gameObjects = OverlapGameObjects(positionSpawn);
 		if (gameObjects.Count > 0)
@@ -171,10 +174,11 @@ public class ConstructController : MonoBehaviour
 		string dataJson = JsonUtility.ToJson(lsdata, true);
 		File.WriteAllText(path, dataJson);
 	}
-	public void LoadFromJson()
+	public ListData LoadFromJson(int map)
 	{
-		string lsdata = File.ReadAllText(root + "/Map1.json");
+		string lsdata = File.ReadAllText(root + "/Map"+ map +".json");
 		ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
+		return dataLoaded;
 	}
 
 	public int GetLastIndexFileInFolder()

@@ -12,5 +12,6 @@ public class TagGameObject
     public const string wallBrick = "wallBrick";
     public const string basePlayer = "base";
     public const string grass = "grass";
+    public const string _base = "base";
 
 }

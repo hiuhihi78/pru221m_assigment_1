@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     public Sprite baseDestroyedSprite;
+    public GameObject gameOverUI;
     SpriteRenderer _spriteRenderer;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,8 @@ public class BaseController : MonoBehaviour
             || collision.gameObject.CompareTag(TagGameObject.bulletEnemy))
         {
 			_spriteRenderer.sprite = baseDestroyedSprite;
-
-		}
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
+        }
 	}
 }

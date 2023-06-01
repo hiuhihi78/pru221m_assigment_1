@@ -69,7 +69,6 @@ public class TankController : MonoBehaviour
 			Fire();
 		}
 		checkWining();
-
     }
 
 	protected virtual void Move(Direction direction)
