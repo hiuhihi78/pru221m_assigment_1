@@ -1,20 +1,29 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.Entity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
+
 
 public class MapContructedController : MonoBehaviour
 {
 
     private int currentMap;
     private string root = "Assets/Construct";
+    private ListData listObjectWillCreate;
 
     public GameObject wallBrickPrefab;
     public GameObject wallSteelPrefab;
     public GameObject grassPrefab;
     public GameObject waterPrefab;
+    public GameObject tankEnemyPrefab;
+    public GameObject tankPlayerPrefab;
+    public GameObject gameOverUI;
+    public GameObject gameWinUI;
+    public int numberEnemyTank;
 
     private void Awake()
     {
@@ -24,9 +33,14 @@ public class MapContructedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ListData listObject = LoadFromJson(currentMap);
-        RenderObjectInToMap(listObject);
+        listObjectWillCreate = LoadFromJson(currentMap);
+        RenderObjectInToMap(listObjectWillCreate);
+        RenderRandomTank();
+        RenderTankPlayer();
+        Time.timeScale = 1;
     }
+
+    
 
     private void RenderObjectInToMap(ListData objects)
     {
@@ -53,30 +67,110 @@ public class MapContructedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkWining();
+        checkLosing();
     }
 
-    public void CreateGameObject(GameObject gObject, Vector3 positionSpawn)
+    private void CreateGameObject(GameObject gObject, Vector3 positionSpawn)
     {
         GameObject gameObject1 = Instantiate(gObject, positionSpawn, Quaternion.identity);
-        if (gameObject1.transform.childCount > 0)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                gameObject1.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-
-            }
-        }
-        else
-        {
-            gameObject1.GetComponent<BoxCollider2D>().isTrigger = true;
-        }
     }
 
-    public ListData LoadFromJson(int map)
+    private ListData LoadFromJson(int map)
     {
         string lsdata = File.ReadAllText(root + "/Map" + map + ".json");
         ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
         return dataLoaded;
     }
+
+    private void RenderRandomTank()
+    {
+        for (int i = 0; i < numberEnemyTank; i++)
+        {
+            Vector3 position = GetRandomPosition();
+            RemoveGameObjectSelected(position);
+            CreateGameObject(tankEnemyPrefab, position);
+        }
+    }
+
+    private void RenderTankPlayer()
+    {
+        Vector3 position = GetRandomPosition();
+        RemoveGameObjectSelected(position);
+        CreateGameObject(tankPlayerPrefab, position);
+    }
+
+    private Vector3 GetRandomPosition()
+    {
+        int maxPositionTop = 3;
+        int maxPositionBottom = -3;
+        int maxPositionLeft =  -6;
+        int maxPositionRight = 7;
+
+        float reduce = 0.5f;
+
+        Vector2 basePosition = new Vector2(0.5f, -3.5f);
+
+        float positionX = UnityEngine.Random.Range(maxPositionLeft, maxPositionRight) - reduce;
+        float positionY = UnityEngine.Random.Range(maxPositionBottom, maxPositionTop) - reduce;
+
+        if(positionX == basePosition.x && positionY == basePosition.y)
+        {
+            positionX = -6.46f;
+            positionY = -3.57f;
+        }
+
+        return new Vector3(positionX, positionY, 0);
+    }
+
+
+    private void RemoveGameObjectSelected(Vector3 positionSpawn)
+    {
+        var gameObjects = OverlapGameObjects(positionSpawn);
+        if (gameObjects.Count > 0)
+        {
+            GameObject parentObj = null;
+            if (gameObjects.Count > 1)
+            {
+                parentObj = gameObjects[0].transform.parent.gameObject;
+            }
+            foreach (var g in gameObjects)
+            {
+                Destroy(g);
+            }
+            if (parentObj != null)
+            {
+                Destroy(parentObj.gameObject);
+            }
+        }
+    }
+
+    public List<GameObject> OverlapGameObjects(Vector3 postion)
+    {
+        var gameObjects = Physics2D.OverlapPointAll(postion)
+            .Select(x => x.gameObject).ToList();
+        return gameObjects;
+    }
+
+    private void checkWining()
+    {
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        var numberOfEnemys = enemys.Length;
+        if (numberOfEnemys == 0)
+        {
+            gameWinUI.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    private void checkLosing()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
 }

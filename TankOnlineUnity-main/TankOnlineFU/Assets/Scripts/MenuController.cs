@@ -59,7 +59,13 @@ public class MenuController : MonoBehaviour
         ConstructController constructController = new ConstructController();
         int currentMapContructed = constructController.GetLastIndexFileInFolder();
 
-        if (currentMapContructed == 0) return;
+        if (currentMapContructed == 0)
+        {
+            Vector3 position = this.gameObject.transform.Find("ButtonLevel2").position;
+            RenderContructButton(position);
+        }
+
+        if (currentMapContructed == 8) return;
 
         for (int row = 0; row <= 1; row++)
         {
@@ -67,11 +73,12 @@ public class MenuController : MonoBehaviour
             {
                 
                 int currentButton = row * 4 + col;
+
                 if (currentButton == 1) continue;
 
-                if (currentButton > currentMapContructed + 1)
+                if (currentButton - 2 == currentMapContructed)
                 {
-                    if(currentMapContructed != 8)
+                    if(currentMapContructed < 8)
                     {
                         Vector3 position = this.gameObject.transform.Find("ButtonLevel" + currentButton).position;
                         RenderContructButton(position);
