@@ -11,6 +11,9 @@ TagManager:
   - grass
   - wallBrick
   - wallSteel
+  - Enemy
+  - bulletEnemy
+  - wallBrickParent
   layers:
   - Default
   - TransparentFX

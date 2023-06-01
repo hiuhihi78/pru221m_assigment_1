@@ -110,7 +110,7 @@ public class ConstructController : MonoBehaviour
 
 	public void SaveIntoJson()
 	{
-		GameObject[] listWallBrick = GameObject.FindGameObjectsWithTag("wallBrick");
+		GameObject[] listWallBrick = GameObject.FindGameObjectsWithTag("wallBrickParent");
 		GameObject[] listWallSteel = GameObject.FindGameObjectsWithTag("wallSteel");
 		GameObject[] listWater = GameObject.FindGameObjectsWithTag("water");
 		GameObject[] listGrass = GameObject.FindGameObjectsWithTag("grass");
