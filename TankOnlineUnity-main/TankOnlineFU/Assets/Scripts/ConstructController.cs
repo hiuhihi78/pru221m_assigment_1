@@ -24,7 +24,7 @@ public class ConstructController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		
+
 	}
 
 	// Update is called once per frame
@@ -63,7 +63,13 @@ public class ConstructController : MonoBehaviour
 	{
 		RemoveGameObjectSelected(positionSpawn);
 		GameObject gameObject1 = Instantiate(gObject, positionSpawn, Quaternion.identity);
-		if(gameObject1.transform.childCount > 0)
+		BoxCollider2D boxCollider2D = gameObject1.GetComponent<BoxCollider2D>()??null;
+		if (boxCollider2D)
+		{
+			boxCollider2D.isTrigger = true;
+
+		}
+		if (gameObject1.transform.childCount > 0)
 		{
 			for (int i = 0; i < 4; i++)
 			{
@@ -79,7 +85,7 @@ public class ConstructController : MonoBehaviour
 
 
 
-    private void RemoveGameObjectSelected(Vector3 positionSpawn)
+	private void RemoveGameObjectSelected(Vector3 positionSpawn)
 	{
 		var gameObjects = OverlapGameObjects(positionSpawn);
 		if (gameObjects.Count > 0)
@@ -176,7 +182,7 @@ public class ConstructController : MonoBehaviour
 	}
 	public ListData LoadFromJson(int map)
 	{
-		string lsdata = File.ReadAllText(root + "/Map"+ map +".json");
+		string lsdata = File.ReadAllText(root + "/Map" + map + ".json");
 		ListData dataLoaded = JsonUtility.FromJson(lsdata, typeof(ListData)) as ListData;
 		return dataLoaded;
 	}

@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: wallBrickParent
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_IsTrigger
@@ -380,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: wallBrickParent
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_IsTrigger
@@ -1432,7 +1432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: wallBrickParent
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_IsTrigger
@@ -1585,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: wallBrickParent
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_IsTrigger
@@ -2046,7 +2046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441351447611, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: wallBrickParent
       objectReference: {fileID: 0}
     - target: {fileID: 3318689441404039134, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
       propertyPath: m_IsTrigger
