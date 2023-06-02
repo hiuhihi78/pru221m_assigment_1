@@ -8,101 +8,119 @@ using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
-    public new Camera camera;
-    public GameObject buttonLevel;
+	public new Camera camera;
+	public GameObject buttonLevel;
 
-    private void Start()
-    {
-        RenderButtonChoseLevelGame();
-    }
-    public void OpenSelectMap()
-    {
-        Vector3 selectMapCameraPostion = new Vector3(75, 0, -10);
-        camera.transform.Translate(selectMapCameraPostion);
-        LoadMap();
-    }
+	private void Start()
+	{
+		RenderButtonChoseLevelGame();
+	}
+	public void OpenSelectMap()
+	{
+		Vector3 selectMapCameraPostion = new Vector3(75, 0, -10);
+		camera.transform.Translate(selectMapCameraPostion);
+		LoadMap();
+	}
 
-    public void QuitGame()
-    {
+	public void QuitGame()
+	{
 
-    }
+	}
 
-    public void BackMenu()
-    {
-        Vector3 menuCameraPosition = new Vector3(0, 0, -10);
-        camera.transform.position = menuCameraPosition;
-    }
+	public void BackMenu()
+	{
+		Vector3 menuCameraPosition = new Vector3(0, 0, -10);
+		camera.transform.position = menuCameraPosition;
+	}
 
-    public void StartGameDefaultMap1()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+	public void StartGameDefaultMap1()
+	{
+		SceneManager.LoadScene("SampleScene");
+	}
 
-    private void LoadMap()
-    {
+	private void LoadMap()
+	{
 
-    }
+	}
 
-    public void OpenContructionSence()
-    {
-        SceneManager.LoadScene("ConstructionScene");
-    }
+	public void OpenContructionSence()
+	{
+		SceneManager.LoadScene("ConstructionScene");
+	}
 
-    private void EnableButtonLevel(string level)
-    {
-        GameObject buttonlevel = this.gameObject.transform.Find("ButtonLevel" + level).gameObject;
-        buttonlevel.SetActive(true);
-    }
+	private void EnableButtonLevel(string level)
+	{
+		try
+		{
+			GameObject buttonlevel = this.gameObject.transform.Find("ButtonLevel" + level).gameObject;
 
-    private void RenderButtonChoseLevelGame()
-    {
-        ConstructController constructController = new ConstructController();
-        int currentMapContructed = constructController.GetLastIndexFileInFolder();
+			buttonlevel.SetActive(true);
+		}
+		catch (NullReferenceException)
+		{
+			return;
+		}
 
-        if (currentMapContructed == 0)
-        {
-            Vector3 position = this.gameObject.transform.Find("ButtonLevel2").position;
-            RenderContructButton(position);
-        }
+	}
 
-        if (currentMapContructed == 8) return;
+	private void RenderButtonChoseLevelGame()
+	{
+		ConstructController constructController = new ConstructController();
+		int currentMapContructed = constructController.GetLastIndexFileInFolder();
 
-        for (int row = 0; row <= 1; row++)
-        {
-            for (int col = 1; col <= 4; col++)
-            {
-                
-                int currentButton = row * 4 + col;
+		if (currentMapContructed == 0)
+		{
+			Vector3 position = this.gameObject.transform.Find("ButtonLevel2").position;
+			RenderContructButton(position);
+		}
 
-                if (currentButton == 1) continue;
+		if (currentMapContructed == 8) return;
 
-                if (currentButton - 2 == currentMapContructed)
-                {
-                    if(currentMapContructed < 8)
-                    {
-                        Vector3 position = this.gameObject.transform.Find("ButtonLevel" + currentButton).position;
-                        RenderContructButton(position);
-                    }
-                    return;
-                }
+		for (int row = 0; row <= 1; row++)
+		{
+			for (int col = 1; col <= 4; col++)
+			{
 
-                EnableButtonLevel(currentButton.ToString());
+				int currentButton = row * 4 + col;
 
-            }
-        }
-    }
+				if (currentButton == 1) continue;
 
-    private void RenderContructButton(Vector3 position)
-    {
-        GameObject button = GameObject.Find("ButtonContructionMap"); ;
-        button.transform.position = position;
-    }
+				if (currentButton - 2 == currentMapContructed)
+				{
+					if (currentMapContructed < 8)
+					{
+						try
+						{
+							Vector3 position = this.gameObject.transform.Find("ButtonLevel" + currentButton).position;
+							RenderContructButton(position);
+						}
+						catch (NullReferenceException)
+						{
 
-    public void OpenContructedSecnce(int map)
-    {
-        Constants.mapContructChosed = map;
-        SceneManager.LoadScene("MapContructedSence");
-    }
+							continue;
+						}
 
-    
+					}
+					return;
+				}
+
+				EnableButtonLevel(currentButton.ToString());
+
+			}
+		}
+	}
+
+	private void RenderContructButton(Vector3 position)
+	{
+		GameObject button = GameObject.Find("ButtonContructionMap"); ;
+		button.transform.position = position;
+	}
+
+	public void OpenContructedSecnce(int map)
+	{
+		Constants.mapContructChosed = map;
+		SceneManager.LoadScene("MapContructedSence");
+	}
+
+
 }

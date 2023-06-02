@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 
 public class MapContructedController : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class MapContructedController : MonoBehaviour
     public GameObject tankPlayerPrefab;
     public GameObject gameOverUI;
     public GameObject gameWinUI;
-    public int numberEnemyTank;
+    private int numberEnemyTank;
 
     private void Awake()
     {
@@ -33,6 +33,7 @@ public class MapContructedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        numberEnemyTank = Random.Range(4, 9);
         listObjectWillCreate = LoadFromJson(currentMap);
         RenderObjectInToMap(listObjectWillCreate);
         RenderRandomTank();

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ConstructController : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class ConstructController : MonoBehaviour
 		{
 			Debug.Log("Save map");
 			SaveIntoJson();
+			SceneManager.LoadScene("MenuSence");
 		}
 	}
 
