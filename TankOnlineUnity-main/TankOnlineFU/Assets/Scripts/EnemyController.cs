@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
             Hp = 0,
             Point = 0,
             Position = new Vector3(3, 0, 0),
-            Guid = GUID.Generate()
+            //Guid = GUID.Generate()
         };
 
         //gameObject.transform.position = _tank.Position;

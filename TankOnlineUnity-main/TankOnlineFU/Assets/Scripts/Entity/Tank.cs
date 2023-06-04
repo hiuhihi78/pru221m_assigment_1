@@ -12,7 +12,9 @@ namespace Entity
         public int Point { get; set; }
         public int Hp { get; set; }
 
-        public GUID Guid { get; set; }
+        /// <summary>
+        //public GUID Guid { get; set; }
+        /// </summary>
         public Vector3 Position { get; set; }
 
         public void Move(float x, float y)
