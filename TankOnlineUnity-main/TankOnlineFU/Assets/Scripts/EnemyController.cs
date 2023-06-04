@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public float speed;
 
-    public new Rigidbody2D rigidbody2D;
+    public Rigidbody2D rigidbody2D;
 
     public GameObject BigExplosionPrefabs;
 
@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
             Hp = 0,
             Point = 0,
             Position = new Vector3(3, 0, 0),
-            Guid = GUID.Generate()
+            //Guid = GUID.Generate()
         };
 
         //gameObject.transform.position = _tank.Position;

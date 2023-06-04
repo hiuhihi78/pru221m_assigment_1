@@ -1,5 +1,6 @@
 using DefaultNamespace;
 using Entity;
+using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class TankController : MonoBehaviour
 			Hp = 10,
 			Point = 0,
 			Position = new Vector3(-6.49f, -3.42f, 0),
-			Guid = GUID.Generate()
+			//Guid = GUID.Generate()
 		};
 		//gameObject.transform.position = _tank.Position;
 		_tankMover = gameObject.GetComponent<TankMover>();
