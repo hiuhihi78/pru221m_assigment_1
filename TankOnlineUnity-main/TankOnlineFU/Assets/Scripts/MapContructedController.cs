@@ -35,9 +35,11 @@ public class MapContructedController : MonoBehaviour
     {
         numberEnemyTank = Random.Range(4, 9);
         listObjectWillCreate = LoadFromJson(currentMap);
-        RenderObjectInToMap(listObjectWillCreate);
+        
         RenderRandomTank();
         RenderTankPlayer();
+
+        RenderObjectInToMap(listObjectWillCreate);
         Time.timeScale = 1;
     }
 
@@ -88,34 +90,33 @@ public class MapContructedController : MonoBehaviour
     {
         for (int i = 0; i < numberEnemyTank; i++)
         {
-            Vector3 position = GetRandomPosition();
-            RemoveGameObjectSelected(position);
+            Vector3 position = GetRandomPosition(3,1,-6,7);
+            RemoveObjectsOverlap(position);
+            //RemoveGameObjectSelected(position);
             CreateGameObject(tankEnemyPrefab, position);
         }
     }
 
     private void RenderTankPlayer()
     {
-        Vector3 position = GetRandomPosition();
-        RemoveGameObjectSelected(position);
+        Vector3 position = GetRandomPosition(0,-3,-6,7);
+        RemoveObjectsOverlap(position);
+        //RemoveGameObjectSelected(position);
         CreateGameObject(tankPlayerPrefab, position);
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector3 GetRandomPosition(int maxPositionTop, int maxPositionBottom, int maxPositionLeft, int maxPositionRight)
     {
-        int maxPositionTop = 3;
-        int maxPositionBottom = -3;
-        int maxPositionLeft =  -6;
-        int maxPositionRight = 7;
-
         float reduce = 0.5f;
 
         Vector2 basePosition = new Vector2(0.5f, -3.5f);
 
-        float positionX = UnityEngine.Random.Range(maxPositionLeft, maxPositionRight) - reduce;
-        float positionY = UnityEngine.Random.Range(maxPositionBottom, maxPositionTop) - reduce;
+        float positionX = UnityEngine.Random.Range(maxPositionLeft, maxPositionRight);
+        positionX = positionX > 0 ? positionX - reduce : positionX + reduce;
+        float positionY = UnityEngine.Random.Range(maxPositionBottom, maxPositionTop);
+        positionY = positionY > 0 ? positionY - reduce : positionY + reduce;
 
-        if(positionX == basePosition.x && positionY == basePosition.y)
+        if (positionX == basePosition.x && positionY == basePosition.y)
         {
             positionX = -6.46f;
             positionY = -3.57f;
@@ -151,6 +152,31 @@ public class MapContructedController : MonoBehaviour
         var gameObjects = Physics2D.OverlapPointAll(postion)
             .Select(x => x.gameObject).ToList();
         return gameObjects;
+    }
+
+    public void RemoveObjectsOverlap(Vector3 postion)
+    {
+        //postion = new Vector3(2.5f, -1.5f, 0);
+        List<Data> listRemoveObjects = new List<Data>();
+        foreach (var item in listObjectWillCreate.Data)
+        {
+            if (postion.x == RoundNumber(item.Position.x) && postion.y == RoundNumber(item.Position.y))
+            {
+                listRemoveObjects.Add(item);
+            }
+        }
+
+        foreach (var item in listRemoveObjects)
+        {
+            listObjectWillCreate.Data.Remove(item);
+        }
+        
+    }
+
+    private double RoundNumber(float number)
+    {
+        double result = Math.Round(number, 1);
+        return result;
     }
 
     private void checkWining()
