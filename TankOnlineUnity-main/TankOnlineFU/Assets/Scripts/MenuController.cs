@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
 
 	public void QuitGame()
 	{
-
+		Application.Quit();
 	}
 
 	public void BackMenu()
@@ -63,7 +63,7 @@ public class MenuController : MonoBehaviour
 
 	}
 
-	private void RenderButtonChoseLevelGame()
+	public void RenderButtonChoseLevelGame()
 	{
 		ConstructController constructController = new ConstructController();
 		int currentMapContructed = constructController.GetLastIndexFileInFolder();
@@ -110,7 +110,7 @@ public class MenuController : MonoBehaviour
 		}
 	}
 
-	private void RenderContructButton(Vector3 position)
+	public void RenderContructButton(Vector3 position)
 	{
 		GameObject button = GameObject.Find("ButtonContructionMap"); ;
 		button.transform.position = position;

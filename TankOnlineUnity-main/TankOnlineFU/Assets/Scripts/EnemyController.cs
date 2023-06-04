@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public float speed;
 
-    public new Rigidbody2D rigidbody2D;
+    public Rigidbody2D rigidbody2D;
 
     public GameObject BigExplosionPrefabs;
 

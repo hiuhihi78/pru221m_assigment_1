@@ -171,6 +171,7 @@ public class ConstructController : MonoBehaviour
 			}
 		}
 		string path = $"{root}/{prefix}{GetLastIndexFileInFolder() + 1}.json";
+		
 		if (!File.Exists(path))
 		{
 			File.Create(path).Close();
@@ -191,6 +192,11 @@ public class ConstructController : MonoBehaviour
 
 	public int GetLastIndexFileInFolder()
 	{
+		if (!Directory.Exists(root))
+		{
+			Directory.CreateDirectory(root);
+			return 0;
+		}
 		DirectoryInfo d = new DirectoryInfo(root);
 		Regex regex = new Regex("^Map[0-9]{1,}.json$");
 		FileInfo[] files = d.GetFiles("*.json").Where(x => regex.IsMatch(x.Name)).OrderByDescending(c => c.CreationTime).ToArray(); //Getting Text files
