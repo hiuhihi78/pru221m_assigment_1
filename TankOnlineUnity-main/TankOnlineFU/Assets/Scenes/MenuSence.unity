@@ -2411,7 +2411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3476060542620780745, guid: 0fd561cf5f31d0b47b0954cbe48cde9a, type: 3}
       propertyPath: m_text
-      value: Contruct New Map
+      value: Construct New Map
       objectReference: {fileID: 0}
     - target: {fileID: 3476060544194890064, guid: 0fd561cf5f31d0b47b0954cbe48cde9a, type: 3}
       propertyPath: m_Pivot.x

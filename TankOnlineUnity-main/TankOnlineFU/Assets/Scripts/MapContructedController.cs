@@ -33,7 +33,7 @@ public class MapContructedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numberEnemyTank = Random.Range(4, 9);
+        numberEnemyTank = Random.Range(3, 6);
         listObjectWillCreate = LoadFromJson(currentMap);
         
         RenderRandomTank();
