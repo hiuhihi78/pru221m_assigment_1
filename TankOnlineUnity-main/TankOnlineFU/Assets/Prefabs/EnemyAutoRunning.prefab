@@ -178,7 +178,7 @@ MonoBehaviour:
   spriteUp: {fileID: 21300000, guid: 27a8e2e75693e4e69ade2de1a9ac6ce3, type: 3}
   spriteDown: {fileID: 21300000, guid: c809315d9e24d474ba994bee424cf98c, type: 3}
   speed: 3
-  maxRange: 5
+  maxRange: 10
   delay: 1
   lastFire: 0
   bulletExplosionPrefab: {fileID: 2849739529603639920, guid: 9a6441ea7a33e7d498208376c8b082f0, type: 3}
