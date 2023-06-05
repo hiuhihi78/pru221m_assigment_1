@@ -157,7 +157,7 @@ public class EnemyController : MonoBehaviour
             currentPosition.x > rightWrap || currentPosition.x < leftWrap))
         {
             currentPosition = previousPos;
-            tankDirectionToMove = turnAroundDirectionTank(_tank.Direction);
+            tankDirectionToMove = TurnAroundDirectionTank(_tank.Direction);
         }
 
         gameObject.transform.position = currentPosition;    
@@ -200,24 +200,18 @@ public class EnemyController : MonoBehaviour
 
         if (unChoseDirection != null)
         {
-            if (unChoseDirection == Direction.Up)
+            switch (unChoseDirection)
             {
-                listDirection.Remove(Direction.Up);
-            }
-            else if (unChoseDirection == Direction.Down)
-            {
-                listDirection.Remove(Direction.Down);
-            }
-            else if (unChoseDirection == Direction.Left)
-            {
-                listDirection.Remove(Direction.Left);
-            }
-            else if (unChoseDirection != Direction.Right)
-            {
-                listDirection.Remove(Direction.Right);
+                case Direction.Down:
+                    listDirection.Remove(Direction.Down); break;
+                case Direction.Left:
+                    listDirection.Remove(Direction.Left); break;
+                case Direction.Right:
+                    listDirection.Remove(Direction.Right); break;
+                case Direction.Up:
+                    listDirection.Remove(Direction.Up); break;
             }
         }
-
 
         var numberOfRandomDirection = listDirection.Count;
         var random = Random.Range(0, numberOfRandomDirection);
@@ -243,7 +237,7 @@ public class EnemyController : MonoBehaviour
         return Random.Range(1, 2);
     }
 
-    private Direction turnAroundDirectionTank(Direction currentDirection)
+    private Direction TurnAroundDirectionTank(Direction currentDirection)
     {
         switch (currentDirection)
         {
@@ -282,7 +276,7 @@ public class EnemyController : MonoBehaviour
         switch(collisionTag) 
         {
             case TagGameObject.wallWrap:
-                tankDirectionToMove = turnAroundDirectionTank(_tank.Direction);
+                tankDirectionToMove = TurnAroundDirectionTank(_tank.Direction);
                 break;
             case TagGameObject.enemy:
                 stuckTankDirection = _tank.Direction;
