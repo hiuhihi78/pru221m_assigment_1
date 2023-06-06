@@ -177,17 +177,18 @@ public class EnemyController : MonoBehaviour
 
     private Direction RandomDirectionTank(Direction? stuckTankDirection)
     {
-        Direction newDirection = RanDomDirection(stuckTankDirection);
+        Direction newDirection = RandomDirection(stuckTankDirection);
 
         if (stuckTankDirection != null && newDirection == stuckTankDirection)
         {
-            newDirection = RanDomDirection(stuckTankDirection);
+            //newDirection = RanDomDirection(stuckTankDirection);
+            newDirection = RandomDirectionTank(stuckTankDirection);
         }
 
         return newDirection;
     }
 
-    private Direction RanDomDirection(Direction? unChoseDirection)
+    private Direction RandomDirection(Direction? unChoseDirection)
     {
 
         List<Direction> listDirection = new List<Direction>()
