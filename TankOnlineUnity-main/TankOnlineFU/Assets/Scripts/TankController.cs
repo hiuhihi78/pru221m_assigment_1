@@ -1,6 +1,8 @@
 using DefaultNamespace;
 using Entity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -18,12 +20,15 @@ public class TankController : MonoBehaviour
 	//private CameraController _cameraController;
 	private SpriteRenderer _renderer;
 
-	public Tank Tank { get => _tank; }
+    public Tank Tank { get => _tank; }
 	public TankMover TankMover { get => _tankMover; }
 	public SpriteRenderer Renderer { get => _renderer;  }
 
 	public GameObject gameOverUI;
     public GameObject gameWinUI;
+
+	private float timeStartPowerUpShovel;
+	public GameObject wallStealPrefab;
 
     //public new GameObject camera;
 
@@ -43,12 +48,14 @@ public class TankController : MonoBehaviour
 		//_cameraController = camera.GetComponent<CameraController>();
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
 		Move(Direction.Down);
-	}
+    }
 
 	// Update is called once per frame
 	protected virtual void Update()
 	{
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			Move(Direction.Left);
 		}
@@ -70,6 +77,11 @@ public class TankController : MonoBehaviour
 			Fire();
 		}
 		checkWining();
+
+		if(Time.time > timeStartPowerUpShovel + 5)
+		{
+			HandleRemovePowerUpShovel();
+		}
     }
 
 	protected virtual void Move(Direction direction)
@@ -115,5 +127,47 @@ public class TankController : MonoBehaviour
     {
         Time.timeScale = 0;
         gameOverUI.SetActive(true); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var collisionTag = collision.gameObject.tag;
+		switch (collisionTag) 
+		{
+			case TagGameObject.powerUpTank:
+				break;
+			case TagGameObject.powerUpHelmet: 
+				break;
+			case TagGameObject.powerUpShovel:
+                HandlePowerUpShovel();
+				Destroy(collision.gameObject);
+                break;	
+		}
+    }
+
+	private void HandlePowerUpShovel()
+	{
+		List<GameObject> wallBircks;
+        wallBircks = GameObject.FindGameObjectsWithTag(TagGameObject.wallBrickParent)
+			.Where(obj => 
+				(obj.transform.position.x > -1f && obj.transform.position.x < 2f) &&
+                (obj.transform.position.y > -4f && obj.transform.position.y < -2f)
+            ).ToList();
+		foreach(GameObject gameObject in wallBircks) 
+		{
+			Instantiate(wallStealPrefab, gameObject.transform.position, Quaternion.identity);
+        }
+		timeStartPowerUpShovel = Time.time;
+    }
+
+	private void HandleRemovePowerUpShovel()
+	{
+        List<GameObject> wallSteels;
+        wallSteels = GameObject.FindGameObjectsWithTag(TagGameObject.wallSteel)
+            .Where(obj =>
+                (obj.transform.position.x > -1f && obj.transform.position.x < 2f) &&
+                (obj.transform.position.y > -4f && obj.transform.position.y < -2f)
+            ).ToList();
+		wallSteels.ForEach(wallSteel => { Destroy(wallSteel); });
     }
 }
