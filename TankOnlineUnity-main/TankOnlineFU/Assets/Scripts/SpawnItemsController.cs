@@ -23,23 +23,29 @@ namespace Assets.Scripts
 
         private float randomTimeSpawnItem;
         private List<GameObject> spawnItems;
+        private float spawnTime;
 
         void Start()
         {
-            randomTimeSpawnItem = GetRandomTimeSpawn() + Time.time;
+            spawnTime = Time.time;  
+            randomTimeSpawnItem = GetRandomTimeSpawn();
             spawnItems = new List<GameObject>()
             {
-                powerUpHelmet, powerUpTank, powerUpHelmet
+                powerUpShovel, powerUpTank, powerUpHelmet
             };
 
         }
 
         void Update()
         {
-            if(Time.time > randomTimeSpawnItem) 
+            if(spawnTime > randomTimeSpawnItem) 
             {
                 SpawnItem();
                 randomTimeSpawnItem = Time.time + GetRandomTimeSpawn();
+            }
+            else
+            {
+                spawnTime = Time.time;
             }
         }
 
@@ -63,8 +69,8 @@ namespace Assets.Scripts
 
         private GameObject GetRandomObjectItem()
         {
-            var random = Random.Range(0, spawnItems.Count);
-            return spawnItems[random];
+            int random = Random.Range(0, spawnItems.Count - 1);
+            return spawnItems[0];
         }
 
     }

@@ -10,8 +10,12 @@ public class TagGameObject
     public const string water = "water";
     public const string wallSteel = "wallSteel";
     public const string wallBrick = "wallBrick";
+    public const string wallBrickParent = "wallBrickParent";
     public const string basePlayer = "base";
     public const string grass = "grass";
     public const string _base = "base";
+    public const string powerUpTank = "powerUpTank";
+    public const string powerUpShovel = "powerUpShovel";
+    public const string powerUpHelmet = "powerUpHelmet";
 
 }
