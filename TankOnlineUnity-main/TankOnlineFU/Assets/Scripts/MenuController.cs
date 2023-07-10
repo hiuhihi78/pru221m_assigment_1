@@ -1,4 +1,5 @@
 using Assets.Scripts.Constants;
+using Assets.Scripts.Entity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ public class MenuController : MonoBehaviour
 {
 	public new Camera camera;
 	public GameObject buttonLevel;
-
 	private void Start()
 	{
 		RenderButtonChoseLevelGame();
@@ -122,5 +122,8 @@ public class MenuController : MonoBehaviour
 		SceneManager.LoadScene("MapContructedSence");
 	}
 
-
+	public void SetMode(int mode)
+	{
+		Constants.modeGameChosen = (ModeGame)mode;
+	}
 }
