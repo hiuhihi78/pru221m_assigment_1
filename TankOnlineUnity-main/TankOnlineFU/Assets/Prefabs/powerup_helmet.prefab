@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7593098588832836997}
   - component: {fileID: 2541978043772807463}
-  - component: {fileID: -7106294169590068242}
+  - component: {fileID: 278837300946496720}
   m_Layer: 0
   m_Name: powerup_helmet
   m_TagString: powerUpHelmet
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-7106294169590068242
+--- !u!61 &278837300946496720
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

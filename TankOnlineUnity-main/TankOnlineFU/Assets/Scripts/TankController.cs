@@ -3,10 +3,7 @@ using Assets.Scripts.Entity;
 using DefaultNamespace;
 using Entity;
 using System;
-<<<<<<< HEAD
-=======
 using System.Collections.Generic;
->>>>>>> 34a729f9885a8670e0e9456640e87964dc4e0993
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -34,14 +31,11 @@ public class TankController : MonoBehaviour
 	public GameObject gameOverUI;
 	public GameObject gameWinUI;
 
-<<<<<<< HEAD
-	//public new GameObject camera;
-=======
+
 	private float timeStartPowerUpShovel;
 	public GameObject wallStealPrefab;
 
-    //public new GameObject camera;
->>>>>>> 34a729f9885a8670e0e9456640e87964dc4e0993
+	private Animation animation;
 
 	protected virtual void Start()
 	{
@@ -59,6 +53,8 @@ public class TankController : MonoBehaviour
 		//_cameraController = camera.GetComponent<CameraController>();
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
 		Move(Direction.Down);
+
+        animation = GetComponent<Animation>();	
     }
 
 	// Update is called once per frame
@@ -123,16 +119,13 @@ public class TankController : MonoBehaviour
 			}
 		}
 		checkWining();
-<<<<<<< HEAD
-	}
-=======
+
 
 		if(Time.time > timeStartPowerUpShovel + 5)
 		{
 			HandleRemovePowerUpShovel();
 		}
     }
->>>>>>> 34a729f9885a8670e0e9456640e87964dc4e0993
 
 	protected virtual void Move(Direction direction)
 	{
@@ -173,7 +166,6 @@ public class TankController : MonoBehaviour
 		}
 	}
 
-<<<<<<< HEAD
 	private void OnDestroy()
 	{
 		if (Constants.modeGameChosen == ModeGame.TwoPlayer)
@@ -186,12 +178,7 @@ public class TankController : MonoBehaviour
 		Time.timeScale = 0;
 		gameOverUI.SetActive(true);
 	}
-=======
-    private void OnDestroy()
-    {
-        Time.timeScale = 0;
-        gameOverUI.SetActive(true); 
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -200,13 +187,21 @@ public class TankController : MonoBehaviour
 		{
 			case TagGameObject.powerUpTank:
 				break;
-			case TagGameObject.powerUpHelmet: 
-				break;
+			case TagGameObject.powerUpHelmet:
+				HandlePowerUpHelmet();
+				Console.Write("hieu");
+                Destroy(collision.gameObject);
+                break;
 			case TagGameObject.powerUpShovel:
                 HandlePowerUpShovel();
 				Destroy(collision.gameObject);
                 break;	
 		}
+    }
+
+	private void HandlePowerUpHelmet()
+	{
+		animation.Play("Tank_sheild");
     }
 
 	private void HandlePowerUpShovel()
@@ -234,5 +229,5 @@ public class TankController : MonoBehaviour
             ).ToList();
 		wallSteels.ForEach(wallSteel => { Destroy(wallSteel); });
     }
->>>>>>> 34a729f9885a8670e0e9456640e87964dc4e0993
+
 }
