@@ -110,6 +110,10 @@ public class MapContructedController : MonoBehaviour
 			RemoveObjectsOverlap(position);
 			CreateGameObject(tank2PlayerPrefab, position);
 		}
+		else if (Constants.modeGameChosen == ModeGame.Solo)
+		{
+			return;
+		}
 		else
 		{
 			Vector3 position = GetRandomPosition(0, -3, -6, 7);

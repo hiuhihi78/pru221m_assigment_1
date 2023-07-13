@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
 	public GameObject pauseMenuUI;
 	private void Start()
 	{
-		if (Constants.modeGameChosen != ModeGame.TwoPlayer)
+		if (Constants.modeGameChosen == ModeGame.OnePlayer)
 		{
 			GameObject player2 = GameObject.FindGameObjectsWithTag("Player").Where(x => x.name == "Tank2").FirstOrDefault();
 			player2?.SetActive(false);

@@ -5,6 +5,7 @@ using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class TankController : MonoBehaviour
 	//private CameraController _cameraController;
 	private SpriteRenderer _renderer;
 
-    public Tank Tank { get => _tank; }
+	public Tank Tank { get => _tank; }
 	public TankMover TankMover { get => _tankMover; }
 	public SpriteRenderer Renderer { get => _renderer; }
 
@@ -54,21 +55,21 @@ public class TankController : MonoBehaviour
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
 		Move(Direction.Down);
 
-        animation = GetComponent<Animation>();	
-    }
+		animation = GetComponent<Animation>();
+	}
 
 	// Update is called once per frame
 	protected virtual void Update()
 	{
-        
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (nameTank.ToLower() == "player1" && Input.GetKey(KeyCode.A))
 			{
 				Move(Direction.Left);
 			}
-			else if(nameTank.ToLower() == "player2" && Input.GetKey(KeyCode.LeftArrow))
+			else if (nameTank.ToLower() == "player2" && Input.GetKey(KeyCode.LeftArrow))
 			{
 				Move(Direction.Left);
 			}
@@ -121,11 +122,11 @@ public class TankController : MonoBehaviour
 		checkWining();
 
 
-		if(Time.time > timeStartPowerUpShovel + 5)
+		if (Time.time > timeStartPowerUpShovel + 5)
 		{
 			HandleRemovePowerUpShovel();
 		}
-    }
+	}
 
 	protected virtual void Move(Direction direction)
 	{
@@ -157,6 +158,7 @@ public class TankController : MonoBehaviour
 
 	private void checkWining()
 	{
+		if (Constants.modeGameChosen == ModeGame.Solo) return;
 		GameObject enemys = GameObject.Find("Enemys");
 		var numberOfEnemys = enemys.transform.childCount;
 		if (numberOfEnemys == 0)
@@ -175,59 +177,71 @@ public class TankController : MonoBehaviour
 				return;
 			}
 		}
+		else if (Constants.modeGameChosen == ModeGame.Solo)
+		{
+			string namePlayer = transform.gameObject.name;
+			gameOverUI.GetComponent<TextMeshProUGUI>().text = "Tank" == namePlayer ? "PLAYER 2 WIN" : "PLAYER 1 WIN";
+			Time.timeScale = 0;
+			gameOverUI.SetActive(true);
+			return;
+		}
 		Time.timeScale = 0;
 		gameOverUI.SetActive(true);
 	}
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var collisionTag = collision.gameObject.tag;
-		switch (collisionTag) 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (ModeGame.Solo == Constants.modeGameChosen)
+		{
+			return;
+		}
+		var collisionTag = collision.gameObject.tag;
+		switch (collisionTag)
 		{
 			case TagGameObject.powerUpTank:
 				break;
 			case TagGameObject.powerUpHelmet:
 				HandlePowerUpHelmet();
 				Console.Write("hieu");
-                Destroy(collision.gameObject);
-                break;
-			case TagGameObject.powerUpShovel:
-                HandlePowerUpShovel();
 				Destroy(collision.gameObject);
-                break;	
+				break;
+			case TagGameObject.powerUpShovel:
+				HandlePowerUpShovel();
+				Destroy(collision.gameObject);
+				break;
 		}
-    }
+	}
 
 	private void HandlePowerUpHelmet()
 	{
 		animation.Play("Tank_sheild");
-    }
+	}
 
 	private void HandlePowerUpShovel()
 	{
 		List<GameObject> wallBircks;
-        wallBircks = GameObject.FindGameObjectsWithTag(TagGameObject.wallBrickParent)
-			.Where(obj => 
+		wallBircks = GameObject.FindGameObjectsWithTag(TagGameObject.wallBrickParent)
+			.Where(obj =>
 				(obj.transform.position.x > -1f && obj.transform.position.x < 2f) &&
-                (obj.transform.position.y > -4f && obj.transform.position.y < -2f)
-            ).ToList();
-		foreach(GameObject gameObject in wallBircks) 
+				(obj.transform.position.y > -4f && obj.transform.position.y < -2f)
+			).ToList();
+		foreach (GameObject gameObject in wallBircks)
 		{
 			Instantiate(wallStealPrefab, gameObject.transform.position, Quaternion.identity);
-        }
+		}
 		timeStartPowerUpShovel = Time.time;
-    }
+	}
 
 	private void HandleRemovePowerUpShovel()
 	{
-        List<GameObject> wallSteels;
-        wallSteels = GameObject.FindGameObjectsWithTag(TagGameObject.wallSteel)
-            .Where(obj =>
-                (obj.transform.position.x > -1f && obj.transform.position.x < 2f) &&
-                (obj.transform.position.y > -4f && obj.transform.position.y < -2f)
-            ).ToList();
+		List<GameObject> wallSteels;
+		wallSteels = GameObject.FindGameObjectsWithTag(TagGameObject.wallSteel)
+			.Where(obj =>
+				(obj.transform.position.x > -1f && obj.transform.position.x < 2f) &&
+				(obj.transform.position.y > -4f && obj.transform.position.y < -2f)
+			).ToList();
 		wallSteels.ForEach(wallSteel => { Destroy(wallSteel); });
-    }
+	}
 
 }
