@@ -28,6 +28,7 @@ namespace Assets.Scripts
 			//_boxCollider.isTrigger = true;
 			_animator.enabled = true;
 			Renderer.sortingOrder = 1;
+			_animator.Play("Tank_blink");
 		}
 
 		protected override void Update()

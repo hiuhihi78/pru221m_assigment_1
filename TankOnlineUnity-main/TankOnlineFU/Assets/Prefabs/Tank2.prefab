@@ -196,3 +196,4 @@ MonoBehaviour:
   nameTank: player2
   gameOverUI: {fileID: 0}
   gameWinUI: {fileID: 0}
+  wallStealPrefab: {fileID: 1572274642512220054, guid: 0890a4d100eee2e409074de7786a7e8b, type: 3}

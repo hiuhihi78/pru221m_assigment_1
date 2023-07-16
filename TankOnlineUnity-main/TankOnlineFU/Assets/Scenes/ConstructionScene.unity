@@ -2892,9 +2892,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1425215670684244316, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c2500d85418f749429defd72247fa182, type: 3}
+    - target: {fileID: 1425215670684244316, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425215670684244316, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Name
       value: TankPointer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_TagString

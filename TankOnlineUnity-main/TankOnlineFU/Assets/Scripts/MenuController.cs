@@ -125,5 +125,9 @@ public class MenuController : MonoBehaviour
 	public void SetMode(int mode)
 	{
 		Constants.modeGameChosen = (ModeGame)mode;
+		if(Constants.modeGameChosen == ModeGame.Solo)
+		{
+			SceneManager.LoadScene("SoloScene");
+		}
 	}
 }

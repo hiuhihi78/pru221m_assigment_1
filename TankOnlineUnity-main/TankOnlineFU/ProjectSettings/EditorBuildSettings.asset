@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ConstructionScene.unity
     guid: 155992b38c0ae0e4f8ec4716fa5b1511
   - enabled: 1
+    path: Assets/Scenes/SoloScene.unity
+    guid: ce38b96f8a9401845b6b84c5583dc14c
+  - enabled: 1
     path: Assets/Scenes/MapContructedSence.unity
     guid: 35434cbf157d4dd40a97488602539546
   m_configObjects: {}
