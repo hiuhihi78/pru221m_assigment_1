@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Constants
 {
-    public class Constants
+    public static class Constants
     {
         public static int mapContructChosed;
         public static ModeGame modeGameChosen;
+        public static bool IsPlayerHaveHelmet { get; set; }
     }
 }

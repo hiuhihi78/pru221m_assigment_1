@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Constants;
+<<<<<<< HEAD
+=======
 using Assets.Scripts.Entity;
+>>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 using Entity;
 using UnityEngine;
 
@@ -118,7 +121,14 @@ public class BulletController : MonoBehaviour
             switch (collisionTag)
             {
                 case TagGameObject.player:
-                    DestroyTank(collision.gameObject, this.gameObject);
+                    if (Constants.IsPlayerHaveHelmet)
+                    {
+                        BulletExplosion(positionImpacted);
+                    }
+                    else
+                    {
+                        DestroyTank(collision.gameObject, this.gameObject);
+                    }
                     break;
             }
         }
