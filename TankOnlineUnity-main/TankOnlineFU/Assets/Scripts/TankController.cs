@@ -27,7 +27,7 @@ public class TankController : MonoBehaviour
 
 	public Tank Tank { get => _tank; }
 	public TankMover TankMover { get => _tankMover; }
-	public SpriteRenderer Renderer { get => _renderer; }
+	public SpriteRenderer Renderer { get => _renderer;}
 
 	public GameObject gameOverUI;
 	public GameObject gameWinUI;
