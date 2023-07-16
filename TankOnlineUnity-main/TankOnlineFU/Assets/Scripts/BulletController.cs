@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Constants;
+<<<<<<< HEAD
+=======
+using Assets.Scripts.Entity;
+>>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 using Entity;
 using UnityEngine;
 
@@ -70,6 +74,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         Vector3 positionImpacted = this.transform.position;
         var collisionTag = collision.gameObject.tag;
 
@@ -90,8 +95,19 @@ public class BulletController : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
         }
-
-        if (isTankPlayer) 
+		if (ModeGame.Solo == Constants.modeGameChosen)
+		{
+			if (collision.gameObject.CompareTag("Player") && collision.gameObject.name == "Tank" && transform.tag == "bulletEnemy")
+			{
+				Destroy(collision.gameObject);
+			}
+			else if (collision.gameObject.CompareTag("Player") && collision.gameObject.name == "Tank2" && transform.tag == "bullet")
+			{
+				Destroy(collision.gameObject);
+			}
+			return;
+		}
+		if (isTankPlayer) 
         {
             switch (collisionTag)
             {
