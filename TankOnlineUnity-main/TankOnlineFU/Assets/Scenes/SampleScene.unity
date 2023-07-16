@@ -2978,11 +2978,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2368371202551535710, guid: 3e3830f855ce94b47a514689d1b0a30b, type: 3}
       propertyPath: maxSpawnTime
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2368371202551535710, guid: 3e3830f855ce94b47a514689d1b0a30b, type: 3}
       propertyPath: minSpawnTime
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2368371202551536544, guid: 3e3830f855ce94b47a514689d1b0a30b, type: 3}
       propertyPath: m_Name

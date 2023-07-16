@@ -31,9 +31,11 @@ public class TankController : MonoBehaviour
 	public GameObject gameOverUI;
 	public GameObject gameWinUI;
 
-
-	private float timeStartPowerUpShovel;
-	public GameObject wallStealPrefab;
+    private float timeStartPowerUpShovel;
+    private float timeStartPowerUpTank;
+	private float delayTimeTankFirer;
+    private float timeStartPowerUpHelmet;
+    public GameObject wallStealPrefab;
 
 	private Animation animation;
 
@@ -54,7 +56,11 @@ public class TankController : MonoBehaviour
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
 		Move(Direction.Down);
 
-        animation = GetComponent<Animation>();	
+        animation = GetComponent<Animation>();
+
+		delayTimeTankFirer = 1f;
+
+		Constants.IsPlayerHaveHelmet = false;
     }
 
 	// Update is called once per frame
@@ -121,10 +127,21 @@ public class TankController : MonoBehaviour
 		checkWining();
 
 
-		if(Time.time > timeStartPowerUpShovel + 5)
+		if(Time.time > timeStartPowerUpShovel + 5f)
 		{
 			HandleRemovePowerUpShovel();
 		}
+
+        if (Time.time > timeStartPowerUpTank + 3f)
+        {
+			delayTimeTankFirer = 1f;
+        }
+
+        if (Time.time > timeStartPowerUpHelmet + 5f)
+        {
+            Constants.IsPlayerHaveHelmet = false;
+        }
+        
     }
 
 	protected virtual void Move(Direction direction)
@@ -150,10 +167,22 @@ public class TankController : MonoBehaviour
 			Tank = _tank,
 			InitialPosition = _tank.Position
 		};
-		var tankFirer = GetComponent<TankFirer>();
-		tankFirer.isTankPlayer = true;
-		tankFirer.Fire(bullet);
-	}
+
+		var pos = new Vector3(_tank.Position.x + 2, _tank.Position.y, _tank.Position.z);
+
+        var bullet2 = new Bullet
+		{
+			Direction = _tank.Direction,
+			Tank = _tank,
+			InitialPosition = pos
+        };
+        var tankFirer = GetComponent<TankFirer>();
+
+		tankFirer.delay = delayTimeTankFirer;
+
+        tankFirer.isTankPlayer = true;
+        tankFirer.Fire(bullet);
+    }
 
 	private void checkWining()
 	{
@@ -186,10 +215,12 @@ public class TankController : MonoBehaviour
 		switch (collisionTag) 
 		{
 			case TagGameObject.powerUpTank:
-				break;
+				delayTimeTankFirer = 0.4f;
+                timeStartPowerUpTank = Time.time;
+                Destroy(collision.gameObject);
+                break;
 			case TagGameObject.powerUpHelmet:
 				HandlePowerUpHelmet();
-				Console.Write("hieu");
                 Destroy(collision.gameObject);
                 break;
 			case TagGameObject.powerUpShovel:
@@ -199,9 +230,12 @@ public class TankController : MonoBehaviour
 		}
     }
 
-	private void HandlePowerUpHelmet()
+
+    private void HandlePowerUpHelmet()
 	{
-		animation.Play("Tank_sheild");
+       Constants.IsPlayerHaveHelmet = true;
+        timeStartPowerUpHelmet = Time.time;
+		//animation.Play("Tank_sheild");
     }
 
 	private void HandlePowerUpShovel()
