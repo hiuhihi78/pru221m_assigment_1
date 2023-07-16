@@ -57,17 +57,12 @@ public class TankController : MonoBehaviour
 		_renderer = gameObject.GetComponent<SpriteRenderer>();
 		Move(Direction.Down);
 
-<<<<<<< HEAD
         animation = GetComponent<Animation>();
 
 		delayTimeTankFirer = 1f;
 
 		Constants.IsPlayerHaveHelmet = false;
     }
-=======
-		animation = GetComponent<Animation>();
-	}
->>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 
 	// Update is called once per frame
 	protected virtual void Update()
@@ -133,7 +128,6 @@ public class TankController : MonoBehaviour
 		checkWining();
 
 
-<<<<<<< HEAD
 		if(Time.time > timeStartPowerUpShovel + 5f)
 		{
 			HandleRemovePowerUpShovel();
@@ -150,13 +144,6 @@ public class TankController : MonoBehaviour
         }
         
     }
-=======
-		if (Time.time > timeStartPowerUpShovel + 5)
-		{
-			HandleRemovePowerUpShovel();
-		}
-	}
->>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 
 	protected virtual void Move(Direction direction)
 	{
@@ -248,35 +235,26 @@ public class TankController : MonoBehaviour
                 break;
 			case TagGameObject.powerUpHelmet:
 				HandlePowerUpHelmet();
-<<<<<<< HEAD
                 Destroy(collision.gameObject);
                 break;
 			case TagGameObject.powerUpShovel:
                 HandlePowerUpShovel();
-=======
-				Console.Write("hieu");
->>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 				Destroy(collision.gameObject);
 				break;
-			case TagGameObject.powerUpShovel:
-				HandlePowerUpShovel();
-				Destroy(collision.gameObject);
-				break;
+			// case TagGameObject.powerUpShovel:
+			// 	HandlePowerUpShovel();
+			// 	Destroy(collision.gameObject);
+			// 	break;
 		}
 	}
 
 
     private void HandlePowerUpHelmet()
 	{
-<<<<<<< HEAD
        Constants.IsPlayerHaveHelmet = true;
         timeStartPowerUpHelmet = Time.time;
 		//animation.Play("Tank_sheild");
     }
-=======
-		animation.Play("Tank_sheild");
-	}
->>>>>>> a162ac7f65722a37eec65dde50b4061ae148b660
 
 	private void HandlePowerUpShovel()
 	{
