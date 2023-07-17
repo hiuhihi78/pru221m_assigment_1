@@ -31,6 +31,7 @@ public class TankController : MonoBehaviour
 
 	public GameObject gameOverUI;
 	public GameObject gameWinUI;
+	public GameObject tankShieldUI;
 
     private float timeStartPowerUpShovel;
     private float timeStartPowerUpTank;
@@ -60,16 +61,16 @@ public class TankController : MonoBehaviour
         animation = GetComponent<Animation>();
 
 		delayTimeTankFirer = 1f;
-
-		Constants.IsPlayerHaveHelmet = false;
+        tankShieldUI = this.gameObject.transform.GetChild(0).gameObject;
+        
     }
 
 	// Update is called once per frame
 	protected virtual void Update()
 	{
 
-
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			if (nameTank.ToLower() == "player1" && Input.GetKey(KeyCode.A))
 			{
@@ -141,6 +142,7 @@ public class TankController : MonoBehaviour
         if (Time.time > timeStartPowerUpHelmet + 5f)
         {
             Constants.IsPlayerHaveHelmet = false;
+            tankShieldUI.SetActive(false);
         }
         
     }
@@ -252,8 +254,8 @@ public class TankController : MonoBehaviour
     private void HandlePowerUpHelmet()
 	{
        Constants.IsPlayerHaveHelmet = true;
-        timeStartPowerUpHelmet = Time.time;
-		//animation.Play("Tank_sheild");
+       timeStartPowerUpHelmet = Time.time;
+       tankShieldUI.SetActive(true);	
     }
 
 	private void HandlePowerUpShovel()

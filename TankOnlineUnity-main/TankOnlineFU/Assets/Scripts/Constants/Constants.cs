@@ -11,6 +11,6 @@ namespace Assets.Scripts.Constants
     {
         public static int mapContructChosed;
         public static ModeGame modeGameChosen;
-        public static bool IsPlayerHaveHelmet { get; set; }
+        public static bool IsPlayerHaveHelmet { get; set; } = false;
     }
 }

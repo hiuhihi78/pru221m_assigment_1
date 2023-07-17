@@ -524,10 +524,6 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 366956864}
-    - target: {fileID: 658675346, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
-      propertyPath: wallStealPrefab
-      value: 
-      objectReference: {fileID: 1572274642512220054, guid: 0890a4d100eee2e409074de7786a7e8b, type: 3}
     - target: {fileID: 1072091300885886469, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -575,18 +571,6 @@ PrefabInstance:
     - target: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Name
       value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 2820924243523736221, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2820924243523736221, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685362192352705760, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
@@ -714,27 +698,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3318689441351447608, guid: 27aa44cb192a7494fa97cd139121abea, type: 3}
   m_PrefabInstance: {fileID: 275262101}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &331247103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2185695495001854551, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
-  m_PrefabInstance: {fileID: 246376417}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &331247113
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331247103}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: f91c0bfa394431845a87ef788d42d273, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &366956864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8916922388973370407, guid: 9fe16bd7ddeca934e8294ae109f636ec, type: 3}
@@ -884,10 +847,6 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 366956864}
-    - target: {fileID: 3732355470208663635, guid: 8ee221258fec41c418dd941e0f7b3f11, type: 3}
-      propertyPath: wallStealPrefab
-      value: 
-      objectReference: {fileID: 1572274642512220054, guid: 0890a4d100eee2e409074de7786a7e8b, type: 3}
     - target: {fileID: 5933818181708038744, guid: 8ee221258fec41c418dd941e0f7b3f11, type: 3}
       propertyPath: m_RootOrder
       value: 9

@@ -121,6 +121,7 @@ public class BulletController : MonoBehaviour
                     if (Constants.IsPlayerHaveHelmet)
                     {
                         BulletExplosion(positionImpacted);
+                        Destroy(this.gameObject);
                     }
                     else
                     {
