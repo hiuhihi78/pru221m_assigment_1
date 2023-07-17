@@ -69,7 +69,7 @@ namespace Assets.Scripts
 
         private GameObject GetRandomObjectItem()
         {
-            int random = Random.Range(0, spawnItems.Count - 1);
+            int random = Random.Range(0, spawnItems.Count);
             return spawnItems[random];
         }
 

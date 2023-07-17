@@ -211,7 +211,9 @@ public class TankController : MonoBehaviour
 		else if (Constants.modeGameChosen == ModeGame.Solo)
 		{
 			string namePlayer = transform.gameObject.name;
-			gameOverUI.GetComponent<TextMeshProUGUI>().text = "Tank" == namePlayer ? "PLAYER 2 WIN" : "PLAYER 1 WIN";
+            GameObject gameObject1 = gameOverUI.transform.GetChild(2).gameObject;
+            TextMeshProUGUI textMeshProUGUI = gameObject1.GetComponent<TextMeshProUGUI>();
+            textMeshProUGUI.text = "Tank" == namePlayer ? "PLAYER 2 WIN" : "PLAYER 1 WIN";
 			Time.timeScale = 0;
 			gameOverUI.SetActive(true);
 			return;
